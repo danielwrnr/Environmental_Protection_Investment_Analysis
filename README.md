@@ -42,8 +42,8 @@ All generated files are prefixed with a date (`YYYYMMDD`) for chronological orde
 <YYYYMMDD>_<descriptor>.<extension>
 ```
 
-- **Date prefix** (`YYYY-MM-DD`): the date on which the file was produced.
-- **Descriptor**: a short, lowercase, underscore-separated label describing the file's content.
+- **Date prefix** (`YYYYMMDD`): the date on which the file was produced.
+- **Descriptor**: a lowercase, underscore-separated label describing the file's content.
 - **Extension**: file type
 
 ### Overview by File Type
