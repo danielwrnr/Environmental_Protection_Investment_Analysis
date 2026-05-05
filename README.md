@@ -63,4 +63,4 @@ All generated files are prefixed with a date (`YYYYMMDD`) for chronological orde
 
 - The date prefix in file names corresponds to the run date, not the date of the underlying data.
 - Re-running the pipeline on the same day will overwrite same-date files unless output paths are parameterised to include a run ID or time suffix.
-- To support multiple runs per day, the pattern can be extended to `<YYYYMMDD>_<HH-MM>_<descriptor>.<extension>` if needed.
+- To support multiple runs per day, the pattern has to be extended to `<YYYYMMDD>_<HH-MM>_<descriptor>.<extension>` if needed.
