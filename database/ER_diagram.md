@@ -23,8 +23,6 @@ erDiagram
         decimal inv_gov
         decimal inv_corp_spec
         decimal inv_corp_anc
-        decimal inv_corp_total
-        decimal inv_total
     }
 
     Country ||--o{ Macroeconomic_Indicator : "has"
