@@ -25,7 +25,7 @@
           "@id": "#eurostat"
         },
         {
-          "@id": "#luka"
+          "@id": "https://orcid.org/0009-0002-2938-9235"
         }
       ],
       "license": {
@@ -67,6 +67,12 @@
         },
         {
           "@id": "results/20260505_reg_model_performance_comparison.csv"
+        },
+        {
+          "@id": "docs/model-card.md"
+        },
+        {
+          "@id": "docs/FAIR4ML.json"
         }
       ],
       "identifier": "https://doi.org/10.82556/2wmj-nz26"
@@ -77,7 +83,7 @@
       "name": "Eurostat, the statistical office of the European Union"
     },
     {
-      "@id": "#luka",
+      "@id": "https://orcid.org/0009-0002-2938-9235",
       "@type": "Person",
       "name": "Luka Premuš"
     },
@@ -150,7 +156,18 @@
     {
       "@id": "results/20260505_reg_model_performance_comparison.csv",
       "@type": "File",
-      "name": "Regression Model Performance Comparison"
+      "name": "Regression Model Performance Comparison",
+      "identifier": "https://doi.org/10.82556/2wmj-nz26"
+    },
+    {
+      "@id": "docs/model-card.md",
+      "@type": "File",
+      "name": "Model Card Documentation"
+    },
+    {
+      "@id": "docs/FAIR4ML.json",
+      "@type": "File",
+      "name": "FAIR4ML Metadata"
     }
   ]
 }
