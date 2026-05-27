@@ -1,0 +1,156 @@
+{
+  "@context": "https://w3id.org/ro/crate/1.1/context",
+  "@graph": [
+    {
+      "@type": "CreativeWork",
+      "@id": "ro-crate-metadata.json",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      },
+      "about": {
+        "@id": "./"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "name": "EU Environmental Investment Analysis",
+      "description": "Environmental protection investments across EU countries (2014-2022) based on the reuse of existing data from the Eurostat Open Data Portal.",
+      "datePublished": "2026",
+      "publisher": {
+        "@id": "#eurostat"
+      },
+      "author": [
+        {
+          "@id": "#eurostat"
+        },
+        {
+          "@id": "#luka"
+        }
+      ],
+      "license": {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "hasPart": [
+        {
+          "@id": "data/raw/20260505_raw_demo_pjan.csv"
+        },
+        {
+          "@id": "data/raw/20260505_raw_env_ac_epiap1.csv"
+        },
+        {
+          "@id": "data/raw/20260505_raw_env_ac_epigg1.csv"
+        },
+        {
+          "@id": "data/raw/20260505_raw_env_ac_epissp1.csv"
+        },
+        {
+          "@id": "data/raw/20260505_raw_sdg_08_10.csv"
+        },
+        {
+          "@id": "notebooks/investment_analysis.ipynb"
+        },
+        {
+          "@id": "database/schema.sql"
+        },
+        {
+          "@id": "models/20260505_linear_regression.joblib"
+        },
+        {
+          "@id": "models/20260505_random_forest.joblib"
+        },
+        {
+          "@id": "data/processed/20260505_investments_national_totals.csv"
+        },
+        {
+          "@id": "data/processed/20260505_investments_sector_breakdown.csv"
+        },
+        {
+          "@id": "results/20260505_reg_model_performance_comparison.csv"
+        }
+      ],
+      "identifier": "https://doi.org/10.82556/2wmj-nz26"
+    },
+    {
+      "@id": "#eurostat",
+      "@type": "Organization",
+      "name": "Eurostat, the statistical office of the European Union"
+    },
+    {
+      "@id": "#luka",
+      "@type": "Person",
+      "name": "Luka Premuš"
+    },
+    {
+      "@id": "https://creativecommons.org/licenses/by/4.0/",
+      "@type": "CreativeWork",
+      "name": "Creative Commons Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "@id": "data/raw/20260505_raw_env_ac_epigg1.csv",
+      "@type": "File",
+      "name": "Environmental Protection Investments by General Government",
+      "identifier": "https://doi.org/10.2908/ENV_AC_EPIGG1"
+    },
+    {
+      "@id": "data/raw/20260505_raw_env_ac_epissp1.csv",
+      "@type": "File",
+      "name": "Environmental Protection Investments by Specialist Producers as Corporations",
+      "identifier": "https://doi.org/10.2908/ENV_AC_EPISSP1"
+    },
+    {
+      "@id": "data/raw/20260505_raw_env_ac_epiap1.csv",
+      "@type": "File",
+      "name": "Environmental Protection Investments by Ancillary Producers as Corporations",
+      "identifier": "https://doi.org/10.2908/ENV_AC_EPIAP1"
+    },
+    {
+      "@id": "data/raw/20260505_raw_sdg_08_10.csv",
+      "@type": "File",
+      "name": "Real GDP per Capita",
+      "identifier": "https://doi.org/10.2908/SDG_08_10"
+    },
+    {
+      "@id": "data/raw/20260505_raw_demo_pjan.csv",
+      "@type": "File",
+      "name": "Population on 1 January",
+      "identifier": "https://doi.org/10.2908/DEMO_PJAN"
+    },
+    {
+      "@id": "notebooks/investment_analysis.ipynb",
+      "@type": ["File", "SoftwareSourceCode"],
+      "name": "Investment Analysis Notebook"
+    },
+    {
+      "@id": "database/schema.sql",
+      "@type": ["File", "SoftwareSourceCode"],
+      "name": "Database Schema SQL"
+    },
+    {
+      "@id": "models/20260505_linear_regression.joblib",
+      "@type": "File",
+      "name": "Linear Regression Model"
+    },
+    {
+      "@id": "models/20260505_random_forest.joblib",
+      "@type": "File",
+      "name": "Random Forest Model"
+    },
+    {
+      "@id": "data/processed/20260505_investments_national_totals.csv",
+      "@type": "File",
+      "name": "Processed Investments National Totals"
+    },
+    {
+      "@id": "data/processed/20260505_investments_sector_breakdown.csv",
+      "@type": "File",
+      "name": "Processed Investments Sector Breakdown"
+    },
+    {
+      "@id": "results/20260505_reg_model_performance_comparison.csv",
+      "@type": "File",
+      "name": "Regression Model Performance Comparison"
+    }
+  ]
+}
