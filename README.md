@@ -13,6 +13,23 @@ Dependencies are listed in `requirements.txt` at the project root. They are inst
 Run this cell before executing any other part of the notebook.
 
 
+## Database views
+
+The 3NF base schema (`database/schema.sql`) is denormalised by three SQL views (`database/views.sql`) for consumption by the ML pipeline. All views clip negative investment values to zero while preserving NULLs.
+
+| View | Purpose | Grain |
+|---|---|---|
+| `v_investment_sector_breakdown` | Per-CEPA-category investments joined with country and activity names. Adds derived `inv_corp_total` and `inv_total`. Excludes the `TOT_CEPA` aggregate. Used for trend analysis and category exploration. | (year, country_code, ceparema_code), excluding `TOT_CEPA` |
+| `v_investment_national_totals` | National totals (`ceparema_code = 'TOT_CEPA'`) enriched with `population`, `gdp_per_capita`, and derived `inv_per_capita`. Used as the source for the regression and clustering pipelines. | One row per (year, country_code) |
+| `v_ml_regression_features` | ML-ready feature table built on the totals view. Applies `LN(1 + x)` to `gdp_per_capita`, `population`, and `inv_per_capita`, and drops any row with a NULL input. Consumed directly by the regression notebook. | One row per (year, country_code) with no NULLs |
+
+Correctness of the views is verified by `database/tests/test_views.py`, which reconstructs the base tables from the notebook's processed CSVs, runs the views in an in-process DuckDB engine (MariaDB-compatible for the SQL surface used here), and asserts:
+
+- SQL invariants: PK uniqueness, value bounds (clipped to ≥ 0), `inv_total` and `inv_corp_total` arithmetic, `inv_per_capita = inv_total / population`, `log_x = LN(1 + x)`.
+- Value-by-value parity against `data/processed/20260505_investments_*.csv` (the notebook outputs) within float tolerance.
+
+Run with `python database/tests/test_views.py` (requires `duckdb` and `pandas`).
+
 ## File organisation
 
 This section documents the naming convention.
