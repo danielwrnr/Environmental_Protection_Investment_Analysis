@@ -125,7 +125,7 @@ All generated files are prefixed with a date (`YYYYMMDD`) for chronological orde
 
 ## Inputs
 
-...
+The project uses the following Eurostat input datasets: `ENV_AC_EPIGG1`, `ENV_AC_EPISSP1`, `ENV_AC_EPIAP1`, `SDG_08_10`, and `DEMO_PJAN`
 
 ## Outputs 
 
@@ -134,18 +134,33 @@ All generated files are prefixed with a date (`YYYYMMDD`) for chronological orde
 
 ## Licences
 
-### Input data licence
-<INPUT_DATA_LICENSE_NAME>
-Notes: <LICENCE_OBLIGATIONS_OR_RESTRICTIONS>
+This project separates among three categories of artefacts: input data, software/code, and produced/output data. These categories are licensed separately because they have different rights holders and reuse conditions.
 
-### Software licence
-<SOFTWARE_LICENSE> (e.g. MIT / Apache 2.0)
-Justification: <WHY_THIS_LICENSE_IS_USED_AND_COMPATIBLE>
+### Input data
 
-### Output data / models licence
-<OUTPUT_DATA_LICENSE> (e.g. CC BY 4.0)
-Applies to: trained models, figures, derived datasets
+The input data are reused from Eurostat and remain subject to the Eurostat copyright notice and free reuse of data policy. This is the official Eurostat reuse policy for statistical data and metadata.
 
+The intended use is permitted because Eurostat allows reuse of statistical data and metadata for both non commercial and commercial purposes. No payment or  written licence is needed, but the source must be indicated and modifications must be clearly stated. This project acknowledges Eurostat as the source of the input data and documents that the data were processed for analysis and machine learning.
+
+Obligations: any reuse of the input data or derived outputs should acknowledge Eurostat as the source and state that the data have been modified from the original Eurostat datasets. No ShareAlike obligation was identified.
+
+Eurostat copyright notice and free reuse policy: https://ec.europa.eu/eurostat/help/copyright-notice
+
+### Software and code
+
+The software and code in this repository are licensed under the **MIT License**. This includes notebooks, scripts, SQL files and other implementation files specific to this project. The full licence text is provided in the repository root as `LICENSE`.
+
+The MIT License was chosen because it is a flexible, minimally restrictive open-source licence that allows reuse, modification, distribution, and adaptation of our project code. This is appropriate for a reproducible open project because others can inspect, rerun, and extend the analysis.
+
+The MIT License applies only to the project software/code. It does not apply to the Eurostat input data and does not change the Eurostat reuse terms. This makes it compatible with the input data licence/reuse terms. Namely users may reuse the code under MIT but they must still acknowledge Eurostat as the source of the input data and indicate any modifications to the data. The MIT License does not prevent this attribution and does not impose additional restrictions on the reused Eurostat data.
+
+### Produced and output data
+
+Produced and output artefacts are licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)** unless otherwise stated in a specific deposit record. This includes generated datasets, result files, prediction outputs, figures and trained model artefacts.
+
+CC BY 4.0 was chosen because it allows reuse, sharing and adaptation with attribution. It is appropriate for open research outputs and is compatible with the Eurostat reuse terms because it preserves attribution obligations and allows the project to state that the outputs are derived from modified Eurostat data.
+
+The CC BY 4.0 licence will also be stated in the metadata of each deposit that contains produced or output artefacts.
 
 ## Contributors
 
