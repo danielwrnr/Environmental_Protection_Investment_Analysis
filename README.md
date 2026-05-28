@@ -2,15 +2,55 @@
 This project analyzes environmental protection investments across EU countries (2014–2022) using Eurostat data. It explores the relationship between national wealth and sustainability spending through data preprocessing, exploratory analysis, clustering and predictive modeling (Linear Regression and Random Forest).
 
 
-##  Setup
+##  Requirements and Installation
 
-Dependencies are listed in `requirements.txt` at the project root. They are installed directly from the first cell of `notebooks/investment_analysis.ipynb`:
+### Software requirements
+
+- Python: 3.11.14
+- pip (package manager)
+
+### Installation
+
+Install dependencies from the project root or directly within the notebook environment. 
+
+**Option 1 (recommended)**
+
+Run the following cell in any notebook before executing any other part of the notebook. This cell is already included in the provided notebooks.
 
 ```python
 %pip install -r ../requirements.txt
 ```
 
-Run this cell before executing any other part of the notebook.
+**Option 2 (Terminal)**
+
+From the project root:
+
+```bash
+pip install -r ../requirements.txt
+```
+
+## Reproducibility Instructions (Step-by-step)
+
+1. Clone the repository: 
+
+```bash
+git clone https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis.git
+```
+
+2. Navigate to the project folder 
+
+```bash
+cd Environmental_Protection_Investment_Analysis
+```
+
+3. Open the analysis notebook: notebooks/investment_analysis.ipynb
+
+4. Install dependencies (see above)
+5. Run the notebook cells. The generated outputs will be written to 
+- data/
+- figures/
+- models/
+- results/
 
 
 ## Database views
@@ -81,3 +121,39 @@ All generated files are prefixed with a date (`YYYYMMDD`) for chronological orde
 - The date prefix in file names corresponds to the run date, not the date of the underlying data.
 - Re-running the pipeline on the same day will overwrite same-date files unless output paths are parameterised to include a run ID or time suffix.
 - To support multiple runs per day, the pattern has to be extended to `<YYYYMMDD>_<HH-MM>_<descriptor>.<extension>` if needed.
+
+
+## Inputs
+
+...
+
+## Outputs 
+
+...
+
+
+## Licences
+
+### Input data licence
+<INPUT_DATA_LICENSE_NAME>
+Notes: <LICENCE_OBLIGATIONS_OR_RESTRICTIONS>
+
+### Software licence
+<SOFTWARE_LICENSE> (e.g. MIT / Apache 2.0)
+Justification: <WHY_THIS_LICENSE_IS_USED_AND_COMPATIBLE>
+
+### Output data / models licence
+<OUTPUT_DATA_LICENSE> (e.g. CC BY 4.0)
+Applies to: trained models, figures, derived datasets
+
+
+## Contributors
+
+- Daniel Werner, ORCID: https://orcid.org/0009-0008-1686-7801
+- Georgios Papadopoulos, ORCID: https://orcid.org/0009-0006-9997-3188
+- Johannes Oster, ORCID: https://orcid.org/0009-0001-1344-1492
+- Luka Premus, ORCID: https://orcid.org/0009-0002-2938-9235
+
+## Zenodo DOI
+
+<ZENODO_DOI_BADGE_PLACEHOLDER>
