@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Environmental Protection Investment Analysis: Do Rich Countries Invest More in Saving the Planet?"
+abstract: >-
+  Analysis of environmental protection investments across EU countries
+  (2014-2022) using Eurostat data. The project examines the relationship
+  between national wealth (GDP per capita) and per-capita environmental
+  protection investment via exploratory analysis, clustering, and predictive
+  modelling (linear regression and random forest), and is developed as a
+  fully FAIR open-science experiment for the TU Wien Data Stewardship
+  course (194.045).
+type: software
+authors:
+  - family-names: "Premus"
+    given-names: "Luka"
+    affiliation: "TU Wien"
+    orcid: "https://orcid.org/0009-0002-2938-9235"
+  - family-names: "Papadopoulos"
+    given-names: "Georgios"
+    affiliation: "TU Wien"
+    orcid: "https://orcid.org/0009-0006-9997-3188"
+  - family-names: "Werner"
+    given-names: "Daniel"
+    affiliation: "TU Wien"
+    orcid: "https://orcid.org/0009-0008-1686-7801"
+  - family-names: "Oster"
+    given-names: "Johannes"
+    affiliation: "TU Wien"
+    orcid: "https://orcid.org/0009-0001-1344-1492"
+repository-code: "https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis"
+license: MIT
+keywords:
+  - environmental investment
+  - Eurostat
+  - CEPA
+  - FAIR data
+  - open science
+  - data stewardship
+  - linear regression
+  - random forest
+# After enabling the GitHub-Zenodo integration and cutting a GitHub release,
+# replace ZENODO_RECORD_ID with the concept DOI assigned by Zenodo:
+# doi: "10.5281/zenodo.ZENODO_RECORD_ID"
+# identifiers:
+#   - type: doi
+#     value: "10.5281/zenodo.ZENODO_RECORD_ID"
+#     description: "Concept DOI - resolves to the latest version"

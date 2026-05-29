@@ -171,4 +171,11 @@ The CC BY 4.0 licence will also be stated in the metadata of each deposit that c
 
 ## Zenodo DOI
 
-<ZENODO_DOI_BADGE_PLACEHOLDER>
+<!--
+After enabling the GitHub-Zenodo integration and cutting the first GitHub release,
+Zenodo will mint a concept DOI for this repository. Replace the placeholders below
+with the assigned record ID (the numeric part of the Zenodo DOI):
+-->
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.ZENODO_RECORD_ID.svg)](https://doi.org/10.5281/zenodo.ZENODO_RECORD_ID)
+
+Citation metadata is also provided in `CITATION.cff` at the repository root.
