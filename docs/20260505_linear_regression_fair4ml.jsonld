@@ -35,7 +35,7 @@
   },
 
   "fair4ml:intendedUse": "Predict environmental investment per capita from macroeconomic indicators (GDP per capita and population) in European countries over time.",
-  "fair4ml:modelRisksBiasLimitations" : "The Random Forest model exhibits limitations due to the relatively simple set of features used for prediction. While it captures non-linear relationships, the reliance on broad macroeconomic indicators means that specific, localized policy shifts or external economic shocks are not captured effectively. Furthermore, the limited sample size associated with country-year aggregations limits the predictive power and generalization capabilities of the model.",
+  "fair4ml:modelRisksBiasLimitations" : "The Linear Regression model exhibits significant limitations due to the assumption of linearity between macroeconomic indicators and environmental investments, which are often non-linear. The reliance on broad macroeconomic indicators means that specific, localized policy shifts or external economic shocks are not captured effectively. Furthermore, the limited sample size associated with country-year aggregations limits the predictive power and generalization capabilities of the model.",
 
   "fair4ml:usageInstructions": "Model was trained using scikit-learn Linear Regression with the following hyperparameters: fit_intercept=true, normalize=default.",
 
