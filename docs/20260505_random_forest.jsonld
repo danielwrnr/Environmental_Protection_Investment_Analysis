@@ -1,0 +1,88 @@
+{
+  "@context": {
+    "schema"   : "http://schema.org/",
+    "codemeta" : "https://w3id.org/codemeta/",
+    "fair4ml"  : "https://w3id.org/fair4ml#",
+    "cr"       : "http://mlcommons.org/croissant/"
+  },
+
+  "@type"            : "fair4ml:MLModel",
+  "schema:name"      : "Random Forest Regressor for Environmental Investment Prediction",
+  "schema:description": "A random forest regression model predicting log-transformed environmental investment per capita from log GDP per capita and log population using a time-based train/test split (2014–2022).",
+
+  "schema:author": [
+    {
+      "@type"           : "schema:Person",
+      "schema:name"     : "Daniel Werner",
+      "schema:identifier": "https://orcid.org/0009-0008-1686-7801"
+    }
+  ],
+
+  "fair4ml:sharedBy": {
+    "@type"           : "schema:Person",
+    "schema:name"     : "Daniel Werner",
+    "schema:identifier": "https://orcid.org/0009-0008-1686-7801"
+  },
+
+  "schema:license"             : "CC-BY-4.0",
+  "schema:codeRepository"      : "https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis",
+  "codemeta:readme"            : "https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis#readme",
+  "schema:softwareRequirements": "scikit-learn==1.7.2",
+
+  "fair4ml:modelCategory": {
+    "@type"      : "schema:DefinedTerm",
+    "schema:name": "Supervised Regression (Random Forest Ensemble)"
+  },
+
+  "fair4ml:intendedUse": "Predict environmental investment per capita from macroeconomic indicators (GDP per capita and population) in European countries over time.",
+  "fair4ml:modelRisksBiasLimitations": "Model is trained exclusively on European countries and may not generalise to other regions; only two input features are used, which limits the model's ability to capture complex country-specific dynamics; max_depth=5 constrains tree depth to reduce overfitting but may underfit complex patterns; temporal effects (e.g., COVID-19 pandemic) are not explicitly modelled and may influence results within the analysed time period.",
+
+  "fair4ml:usageInstructions": "Model was trained using scikit-learn RandomForestRegressor with the following hyperparameters: n_estimators=200, max_depth=5, random_state=42. All remaining parameters use scikit-learn defaults (criterion=squared_error, max_features=1.0, min_samples_split=2, min_samples_leaf=1, bootstrap=True).",
+
+  "fair4ml:trainedOn": {
+    "@type"            : ["schema:Dataset", "cr:Dataset"],
+    "schema:name"      : "Environmental investment dataset (temporal training split 2014–2019)",
+    "schema:identifier": "<TRAINING_DATASET_DOI_PLACEHOLDER>",
+    "schema:description": "Pre-processed dataset used for model training, including log-transformed GDP per capita, population and environmental investment per capita."
+  },
+
+  "fair4ml:testedOn": {
+    "@type"            : ["schema:Dataset", "cr:Dataset"],
+    "schema:name"      : "Environmental investment dataset (temporal test split 2020–2022)",
+    "schema:identifier": "<TEST_DATASET_DOI_PLACEHOLDER>",
+    "schema:description": "Hold-out test split based on temporal separation (years 2020–2022) used to evaluate model generalisation on new data."
+  },
+
+  "fair4ml:hasEvaluation": {
+    "@type"                      : "fair4ml:MLModelEvaluation",
+    "schema:name"                : "Test-set evaluation (2020–2022)",
+    "fair4ml:extrinsicEvaluation": false,
+
+    "fair4ml:evaluationDataset": {
+      "@type"            : "cr:Dataset",
+      "schema:name"      : "Temporal test split 2020–2022",
+      "schema:identifier": "<TEST_DATASET_DOI_PLACEHOLDER>"
+    },
+
+    "fair4ml:evaluationMetrics": [
+      {
+        "@type"                     : "schema:PropertyValue",
+        "schema:name"               : "MAE",
+        "schema:value"              : "0.272485",
+        "schema:measurementTechnique": "Mean Absolute Error"
+      },
+      {
+        "@type"                     : "schema:PropertyValue",
+        "schema:name"               : "RMSE",
+        "schema:value"              : "0.333632",
+        "schema:measurementTechnique": "Root Mean Squared Error"
+      },
+      {
+        "@type"                     : "schema:PropertyValue",
+        "schema:name"               : "R2",
+        "schema:value"              : "0.717201",
+        "schema:measurementTechnique": "Coefficient of Determination"
+      }
+    ]
+  }
+}

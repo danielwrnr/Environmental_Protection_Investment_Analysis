@@ -136,12 +136,18 @@
     {
       "@id": "models/20260505_linear_regression.joblib",
       "@type": "File",
-      "name": "Linear Regression Model"
+      "name": "Linear Regression Model",
+      "subjectOf": {
+        "@id": "docs/20260505_linear_regression_fair4ml.jsonld"
+      }
     },
     {
       "@id": "models/20260505_random_forest.joblib",
       "@type": "File",
-      "name": "Random Forest Model"
+      "name": "Random Forest Model",
+      "subjectOf": {
+        "@id": "docs/20260505_random_forest_fair4ml.jsonld"
+      }
     },
     {
       "@id": "data/processed/20260505_investments_national_totals.csv",
@@ -165,9 +171,16 @@
       "name": "Model Card Documentation"
     },
     {
-      "@id": "docs/FAIR4ML.json",
+      "@id": "docs/20260505_linear_regression_fair4ml.jsonld",
       "@type": "File",
-      "name": "FAIR4ML Metadata"
+      "name": "FAIR4ML Metadata - Linear Regression",
+      "encodingFormat": "application/ld+json"
+    },
+    {
+      "@id": "docs/20260505_random_forest_fair4ml.jsonld",
+      "@type": "File",
+      "name": "FAIR4ML Metadata - Random Forest",
+      "encodingFormat": "application/ld+json"
     }
   ]
 }

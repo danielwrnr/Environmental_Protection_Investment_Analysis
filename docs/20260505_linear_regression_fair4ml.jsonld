@@ -1,0 +1,88 @@
+{
+  "@context": {
+    "schema"   : "http://schema.org/",
+    "codemeta" : "https://w3id.org/codemeta/",
+    "fair4ml"  : "https://w3id.org/fair4ml#",
+    "cr"       : "http://mlcommons.org/croissant/"
+  },
+
+  "@type"            : "fair4ml:MLModel",
+  "schema:name"      : "Linear Regression Model for Environmental Investment Prediction",
+  "schema:description": "A linear regression model predicting log-transformed environmental investment per capita from log GDP per capita and log population using time-based train/test split (2014–2022).",
+
+  "schema:author": [
+    {
+      "@type"           : "schema:Person",
+      "schema:name"     : "Daniel Werner",
+      "schema:identifier": "https://orcid.org/0009-0008-1686-7801"
+    }
+  ],
+
+  "fair4ml:sharedBy": {
+    "@type"      : "schema:Person",
+    "schema:name": "Daniel Werner",
+    "schema:identifier": "https://orcid.org/0009-0008-1686-7801"
+  },
+
+  "schema:license"            : "CC-BY-4.0",
+  "schema:codeRepository"     : "https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis",
+  "codemeta:readme"           : "https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis#readme",
+  "schema:softwareRequirements": "scikit-learn==1.7.2",
+
+  "fair4ml:modelCategory": {
+    "@type"      : "schema:DefinedTerm",
+    "schema:name": "Supervised Regression (Linear Regression)"
+  },
+
+  "fair4ml:intendedUse": "Predict environmental investment per capita from macroeconomic indicators (GDP per capita and population) in European countries over time.",
+  "fair4ml:modelRisksBiasLimitations" : "The Random Forest model exhibits limitations due to the relatively simple set of features used for prediction. While it captures non-linear relationships, the reliance on broad macroeconomic indicators means that specific, localized policy shifts or external economic shocks are not captured effectively. Furthermore, the limited sample size associated with country-year aggregations limits the predictive power and generalization capabilities of the model.",
+
+  "fair4ml:usageInstructions": "Model was trained using scikit-learn Linear Regression with the following hyperparameters: fit_intercept=true, normalize=default.",
+
+  "fair4ml:trainedOn": {
+    "@type"           : ["schema:Dataset", "cr:Dataset"],
+    "schema:name"     : "DBRepo Regression Feature View Dataset: Environmental investment dataset (temporal training split 2014–2019)",
+    "schema:identifier": "https://doi.org/10.82556/2wmj-nz26",
+    "schema:description": "DBRepo dataset (test environment DOI) used via SQL view v_ml_regression_features (ID: 216dc569-b20c-43fd-ab1e-6a2bad631b1c)"
+  },
+
+  "fair4ml:testedOn": {
+    "@type"           : ["schema:Dataset", "cr:Dataset"],
+    "schema:name"     : "DBRepo Regression Feature View Dataset: Environmental investment dataset (temporal test split 2020–2022)",
+    "schema:identifier": "https://doi.org/10.82556/2wmj-nz26",
+    "schema:description": "DBRepo dataset (test environment DOI) used via SQL view v_ml_regression_features (ID: 216dc569-b20c-43fd-ab1e-6a2bad631b1c)"
+  },
+
+  "fair4ml:hasEvaluation": {
+    "@type"                    : "fair4ml:MLModelEvaluation",
+    "schema:name"              : "Test-set evaluation (2020–2022)",
+    "fair4ml:extrinsicEvaluation": false,
+
+    "fair4ml:evaluationDataset": {
+      "@type"           : "cr:Dataset",
+      "schema:name"     : "Temporal test split 2020–2022",
+      "schema:identifier": "<TEST_DATASET_DOI_PLACEHOLDER>"
+    },
+
+    "fair4ml:evaluationMetrics": [
+      {
+        "@type"                    : "schema:PropertyValue",
+        "schema:name"              : "MAE",
+        "schema:value"             : "0.335210",
+        "schema:measurementTechnique": "Mean Absolute Error"
+      },
+      {
+        "@type"                    : "schema:PropertyValue",
+        "schema:name"              : "RMSE",
+        "schema:value"             : "0.417737",
+        "schema:measurementTechnique": "Root Mean Squared Error"
+      },
+      {
+        "@type"                    : "schema:PropertyValue",
+        "schema:name"              : "R2",
+        "schema:value"             : "0.556647",
+        "schema:measurementTechnique": "Coefficient of Determination"
+      }
+    ]
+  }
+}
