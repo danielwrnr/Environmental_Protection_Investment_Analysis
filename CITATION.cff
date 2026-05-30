@@ -5,10 +5,9 @@ abstract: >-
   Analysis of environmental protection investments across EU countries
   (2014-2022) using Eurostat data. The project examines the relationship
   between national wealth (GDP per capita) and per-capita environmental
-  protection investment via exploratory analysis, clustering, and predictive
-  modelling (linear regression and random forest), and is developed as a
-  fully FAIR open-science experiment for the TU Wien Data Stewardship
-  course (194.045).
+  protection investment via exploratory analysis and predictive modelling 
+  (linear regression and random forest), and is developed as a fully FAIR 
+  open-science experiment for the TU Wien Data Stewardship course (194.045).
 type: software
 authors:
   - family-names: "Premus"
