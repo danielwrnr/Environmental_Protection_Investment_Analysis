@@ -1,0 +1,668 @@
+{
+  "contact": {
+    "contact_id": {
+      "identifier": "0009-0002-2938-9235",
+      "type": "orcid"
+    },
+    "mbox": "e12552143@student.tuwien.ac.at",
+    "name": "Luka Premuš"
+  },
+  "contributor": [
+    {
+      "contributor_id": {
+        "identifier": "0009-0006-9997-3188",
+        "type": "orcid"
+      },
+      "mbox": "e12412231@student.tuwien.ac.at",
+      "name": "Georgios Papadopoulos",
+      "role": [
+        "Data Manager"
+      ]
+    },
+    {
+      "contributor_id": {
+        "identifier": "0009-0001-1344-1492",
+        "type": "orcid"
+      },
+      "mbox": "e11720342@student.tuwien.ac.at",
+      "name": "Johannes Oster",
+      "role": [
+        "Data Manager"
+      ]
+    },
+    {
+      "contributor_id": {
+        "identifier": "0009-0002-2938-9235",
+        "type": "orcid"
+      },
+      "mbox": "e12552143@student.tuwien.ac.at",
+      "name": "Luka Premuš",
+      "role": [
+        "Data Manager"
+      ]
+    },
+    {
+      "contributor_id": {
+        "identifier": "0009-0008-1686-7801",
+        "type": "orcid"
+      },
+      "mbox": "e12429667@student.tuwien.ac.at",
+      "name": "Daniel Werner",
+      "role": [
+        "Data Manager"
+      ]
+    }
+  ],
+  "cost": [],
+  "created": 1780046295075,
+  "dataset": [
+    {
+      "description": "Serialized trained machine learning models including Linear Regression and Random Forest regressors. They are used for prediction of environmental protection investment levels based on macroeconomic indicators.",
+      "distribution": [
+        {
+          "access_url": "https://researchdata.tuwien.ac.at/",
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Serialized trained machine learning models including Linear Regression and Random Forest regressors. They are used for prediction of environmental protection investment levels based on macroeconomic indicators.",
+          "format": [
+            "Other"
+          ],
+          "host": {
+            "description": "TU Wien Research Data is an institutional repository of TU Wien to enable storing, sharing and publishing of digital objects, in particular research data. It facilitates the funders' requirements for open access to research data and the FAIR principles by making research output findable, accessible, interoperable, and reusable. A DOI is assigned to each dataset published in TU Wien Research Data. This service is developed by the TU Wien Center for Research Data Management and hosted by TU.it.",
+            "pid_system": [
+              "doi"
+            ],
+            "storage_type": "institutional",
+            "support_versioning": "yes",
+            "title": "TU Wien Research Data",
+            "url": "https://researchdata.tuwien.ac.at/"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Trained ML models"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Serialized trained machine learning models including Linear Regression and Random Forest regressors. They are used for prediction of environmental protection investment levels based on macroeconomic indicators.",
+          "format": [
+            "Other"
+          ],
+          "host": {
+            "backup_frequency": "Repository-managed"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Trained ML models"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Serialized trained machine learning models including Linear Regression and Random Forest regressors. They are used for prediction of environmental protection investment levels based on macroeconomic indicators.",
+          "format": [
+            "Other"
+          ],
+          "host": {
+            "backup_frequency": "Continuous"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Trained ML models"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Serialized trained machine learning models including Linear Regression and Random Forest regressors. They are used for prediction of environmental protection investment levels based on macroeconomic indicators.",
+          "format": [
+            "Other"
+          ],
+          "host": {
+            "backup_frequency": "On release"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Trained ML models"
+        }
+      ],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Trained ML models",
+      "type": "Other",
+      "dataset_id": {
+        "identifier": "P1",
+        "type": "other"
+      }
+    },
+    {
+      "description": "Two Jupyter notebooks (dbrepo_upload.ipynb, investment_analysis.ipynb) implementing data ingestion, preprocessing, database loading (DBRepo API), feature engineering, model training and evaluation. These files define the full reproducible pipeline from raw data to results.",
+      "distribution": [
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Two Jupyter notebooks (dbrepo_upload.ipynb, investment_analysis.ipynb) implementing data ingestion, preprocessing, database loading (DBRepo API), feature engineering, model training and evaluation. These files define the full reproducible pipeline from raw data to results.",
+          "format": [
+            "Source code"
+          ],
+          "host": {
+            "backup_frequency": "Continuous"
+          },
+          "license": [
+            {
+              "license_ref": "https://opensource.org/license/mit",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Jupyter Notebooks for data processing and analytical workflow"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Two Jupyter notebooks (dbrepo_upload.ipynb, investment_analysis.ipynb) implementing data ingestion, preprocessing, database loading (DBRepo API), feature engineering, model training and evaluation. These files define the full reproducible pipeline from raw data to results.",
+          "format": [
+            "Source code"
+          ],
+          "host": {
+            "backup_frequency": "On release"
+          },
+          "license": [
+            {
+              "license_ref": "https://opensource.org/license/mit",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Jupyter Notebooks for data processing and analytical workflow"
+        }
+      ],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Jupyter Notebooks for data processing and analytical workflow",
+      "type": "Source code",
+      "dataset_id": {
+        "identifier": "P2",
+        "type": "other"
+      }
+    },
+    {
+      "description": "The raw input datasets were retrieved from the Eurostat API and stored as CSV snapshot files in the \"data/raw/\" directory of the Github Repository to ensure reproducibility and version stability of the analysis. The datasets cover EU member states for the years 2014–2022 and include both environmental protection investment indicators and macroeconomic indicators.\nThe raw datasets are preserved in their original tabular structure. Standard preprocessing steps such as cleaning, integration, and transformation into the relational database schema are applied during the analysis workflow.",
+      "distribution": [
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "The raw input datasets were retrieved from the Eurostat API and stored as CSV snapshot files in the \"data/raw/\" directory of the Github Repository to ensure reproducibility and version stability of the analysis. The datasets cover EU member states for the years 2014–2022 and include both environmental protection investment indicators and macroeconomic indicators.\nThe raw datasets are preserved in their original tabular structure. Standard preprocessing steps such as cleaning, integration, and transformation into the relational database schema are applied during the analysis workflow.",
+          "format": [
+            "Structured text"
+          ],
+          "host": {
+            "backup_frequency": "Continuous"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Raw Eurostat Environmental Protection Investment and Macroeconomic Indicator Datasets"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "The raw input datasets were retrieved from the Eurostat API and stored as CSV snapshot files in the \"data/raw/\" directory of the Github Repository to ensure reproducibility and version stability of the analysis. The datasets cover EU member states for the years 2014–2022 and include both environmental protection investment indicators and macroeconomic indicators.\nThe raw datasets are preserved in their original tabular structure. Standard preprocessing steps such as cleaning, integration, and transformation into the relational database schema are applied during the analysis workflow.",
+          "format": [
+            "Structured text"
+          ],
+          "host": {
+            "backup_frequency": "On release"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Raw Eurostat Environmental Protection Investment and Macroeconomic Indicator Datasets"
+        }
+      ],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Raw Eurostat Environmental Protection Investment and Macroeconomic Indicator Datasets",
+      "type": "Structured text",
+      "dataset_id": {
+        "identifier": "P3",
+        "type": "other"
+      }
+    },
+    {
+      "description": "A third normal form relational schema integrating environmental investment data with macroeconomic indicators and country metadata. It consists of four core entities: Country, Environmental_Activity, Environmental_Investment and Macroeconomic_Indicator.",
+      "distribution": [
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "A third normal form relational schema integrating environmental investment data with macroeconomic indicators and country metadata. It consists of four core entities: Country, Environmental_Activity, Environmental_Investment and Macroeconomic_Indicator.",
+          "format": [
+            "Databases"
+          ],
+          "host": {
+            "backup_frequency": "System-managed"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Normalised Environmental Investment SQL Tables (3NF schema)"
+        }
+      ],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Normalised Environmental Investment SQL Tables (3NF schema)",
+      "type": "Databases",
+      "dataset_id": {
+        "identifier": "P4",
+        "type": "other"
+      }
+    },
+    {
+      "description": "Derived datasets generated via SQL views from the 3NF schema. They include sector-level breakdowns, national totals and machine-learning-ready feature tables.",
+      "distribution": [
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Derived datasets generated via SQL views from the 3NF schema. They include sector-level breakdowns, national totals and machine-learning-ready feature tables.",
+          "format": [
+            "Databases"
+          ],
+          "host": {
+            "backup_frequency": "System-managed"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "ML-ready Environmental Investment Feature Table SQL-Views"
+        }
+      ],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "ML-ready Environmental Investment Feature Table SQL-Views",
+      "type": "Databases",
+      "dataset_id": {
+        "identifier": "P5",
+        "type": "other"
+      }
+    },
+    {
+      "description": "Contains structured evaluation metrics (MAE, RMSE and R2) for both regression models which were produced during experimentation.",
+      "distribution": [
+        {
+          "access_url": "https://researchdata.tuwien.ac.at/",
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Contains structured evaluation metrics (MAE, RMSE and R2) for both regression models which were produced during experimentation.",
+          "format": [
+            "Structured text"
+          ],
+          "host": {
+            "description": "TU Wien Research Data is an institutional repository of TU Wien to enable storing, sharing and publishing of digital objects, in particular research data. It facilitates the funders' requirements for open access to research data and the FAIR principles by making research output findable, accessible, interoperable, and reusable. A DOI is assigned to each dataset published in TU Wien Research Data. This service is developed by the TU Wien Center for Research Data Management and hosted by TU.it.",
+            "pid_system": [
+              "doi"
+            ],
+            "storage_type": "institutional",
+            "support_versioning": "yes",
+            "title": "TU Wien Research Data",
+            "url": "https://researchdata.tuwien.ac.at/"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Model Evaluation Output File"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Contains structured evaluation metrics (MAE, RMSE and R2) for both regression models which were produced during experimentation.",
+          "format": [
+            "Structured text"
+          ],
+          "host": {
+            "backup_frequency": "Repository-managed"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Model Evaluation Output File"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Contains structured evaluation metrics (MAE, RMSE and R2) for both regression models which were produced during experimentation.",
+          "format": [
+            "Structured text"
+          ],
+          "host": {
+            "backup_frequency": "Continuous"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Model Evaluation Output File"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Contains structured evaluation metrics (MAE, RMSE and R2) for both regression models which were produced during experimentation.",
+          "format": [
+            "Structured text"
+          ],
+          "host": {
+            "backup_frequency": "On release"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-05-30 00:00:00.0"
+            }
+          ],
+          "title": "Model Evaluation Output File"
+        }
+      ],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Model Evaluation Output File",
+      "type": "Structured text",
+      "dataset_id": {
+        "identifier": "P6",
+        "type": "other"
+      }
+    },
+    {
+      "description": "Generated visual outputs produced during exploratory data analysis and model evaluation. The figures are derived from processed Eurostat-based datasets and machine learning results. They include correlation analysis between GDP and environmental investment, investment trends across countries and years, breakdowns by environmental protection activity and regression model evaluation plots (actual vs predicted values). These visualisations support interpretation of statistical relationships and model performance.",
+      "distribution": [
+        {
+          "access_url": "https://researchdata.tuwien.ac.at/",
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Generated visual outputs produced during exploratory data analysis and model evaluation. The figures are derived from processed Eurostat-based datasets and machine learning results. They include correlation analysis between GDP and environmental investment, investment trends across countries and years, breakdowns by environmental protection activity and regression model evaluation plots (actual vs predicted values). These visualisations support interpretation of statistical relationships and model performance.",
+          "format": [
+            "Images"
+          ],
+          "host": {
+            "description": "TU Wien Research Data is an institutional repository of TU Wien to enable storing, sharing and publishing of digital objects, in particular research data. It facilitates the funders' requirements for open access to research data and the FAIR principles by making research output findable, accessible, interoperable, and reusable. A DOI is assigned to each dataset published in TU Wien Research Data. This service is developed by the TU Wien Center for Research Data Management and hosted by TU.it.",
+            "pid_system": [
+              "doi"
+            ],
+            "storage_type": "institutional",
+            "support_versioning": "yes",
+            "title": "TU Wien Research Data",
+            "url": "https://researchdata.tuwien.ac.at/"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-04-30 00:00:00.0"
+            }
+          ],
+          "title": "Investment Analysis Figures and Model Visualisations"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Generated visual outputs produced during exploratory data analysis and model evaluation. The figures are derived from processed Eurostat-based datasets and machine learning results. They include correlation analysis between GDP and environmental investment, investment trends across countries and years, breakdowns by environmental protection activity and regression model evaluation plots (actual vs predicted values). These visualisations support interpretation of statistical relationships and model performance.",
+          "format": [
+            "Images"
+          ],
+          "host": {
+            "backup_frequency": "Repository-managed"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-04-30 00:00:00.0"
+            }
+          ],
+          "title": "Investment Analysis Figures and Model Visualisations"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Generated visual outputs produced during exploratory data analysis and model evaluation. The figures are derived from processed Eurostat-based datasets and machine learning results. They include correlation analysis between GDP and environmental investment, investment trends across countries and years, breakdowns by environmental protection activity and regression model evaluation plots (actual vs predicted values). These visualisations support interpretation of statistical relationships and model performance.",
+          "format": [
+            "Images"
+          ],
+          "host": {
+            "backup_frequency": "Continuous"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-04-30 00:00:00.0"
+            }
+          ],
+          "title": "Investment Analysis Figures and Model Visualisations"
+        },
+        {
+          "byte_size": 100000000,
+          "data_access": "open",
+          "description": "Generated visual outputs produced during exploratory data analysis and model evaluation. The figures are derived from processed Eurostat-based datasets and machine learning results. They include correlation analysis between GDP and environmental investment, investment trends across countries and years, breakdowns by environmental protection activity and regression model evaluation plots (actual vs predicted values). These visualisations support interpretation of statistical relationships and model performance.",
+          "format": [
+            "Images"
+          ],
+          "host": {
+            "backup_frequency": "On release"
+          },
+          "license": [
+            {
+              "license_ref": "https://creativecommons.org/licenses/by/4.0/",
+              "start_date": "2026-04-30 00:00:00.0"
+            }
+          ],
+          "title": "Investment Analysis Figures and Model Visualisations"
+        }
+      ],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Investment Analysis Figures and Model Visualisations",
+      "type": "Images",
+      "dataset_id": {
+        "identifier": "P7",
+        "type": "other"
+      }
+    },
+    {
+      "description": "This dataset reports investments made by general government institutions in environmental protection. Expenditures are classified by environmental protection activity (CEPA categories), enabling comparisons of public-sector investments across environmental domains such as waste management, wastewater treatment and biodiversity protection.",
+      "distribution": [],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Environmental protection investments of general government by environmental protection activity",
+      "type": "Other",
+      "dataset_id": {
+        "identifier": "R1",
+        "type": "other"
+      },
+      "rights": [
+        {
+          "license_ref": "https://ec.europa.eu/eurostat/help/copyright-notice",
+          "description": "Eurostat copyright notice and free reuse policy. Reuse is permitted with source attribution and indication of modifications."
+        }
+      ]
+    },
+    {
+      "description": "This dataset contains environmental protection investments made by corporations acting as specialist or secondary producers of environmental services. Investments are organised by environmental protection activity (CEPA categories) and provide insight into private-sector spending on environmental protection measures and services.",
+      "distribution": [],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Environmental protection investments of corporations as specialist and secondary producers by environmental protection activity",
+      "type": "Other",
+      "dataset_id": {
+        "identifier": "R2",
+        "type": "other"
+      },
+      "rights": [
+        {
+          "license_ref": "https://ec.europa.eu/eurostat/help/copyright-notice",
+          "description": "Eurostat copyright notice and free reuse policy. Reuse is permitted with source attribution and indication of modifications."
+        }
+      ]
+    },
+    {
+      "description": "This dataset records environmental protection investments undertaken by corporations as ancillary producers, meaning investments made primarily to reduce the environmental impact of their own operations. Data are classified by both environmental protection activity (CEPA categories) and economic sector according to the NACE Rev. 2 classification, allowing analysis of environmental investments across industries.",
+      "distribution": [],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Environmental protection investments of corporations as ancillary producers by environmental protection activity and NACE Rev. 2 activity",
+      "type": "Other",
+      "dataset_id": {
+        "identifier": "R3",
+        "type": "other"
+      },
+      "rights": [
+        {
+          "license_ref": "https://ec.europa.eu/eurostat/help/copyright-notice",
+          "description": "Eurostat copyright notice and free reuse policy. Reuse is permitted with source attribution and indication of modifications."
+        }
+      ]
+    },
+    {
+      "description": "This indicator measures the economic output per inhabitant, adjusted for purchasing power to allow cross-country comparisons. It serves as the indicator for national wealth.",
+      "distribution": [],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Real GDP per capita PIB réel par habitant Reales BIP pro Kopf",
+      "type": "Other",
+      "dataset_id": {
+        "identifier": "R4",
+        "type": "other"
+      },
+      "rights": [
+        {
+          "license_ref": "https://ec.europa.eu/eurostat/help/copyright-notice",
+          "description": "Eurostat copyright notice and free reuse policy. Reuse is permitted with source attribution and indication of modifications."
+        }
+      ]
+    },
+    {
+      "description": "Total population figures as of January 1st each year. This dataset is used for normalizing absolute investment values into \"per capita\" metrics to ensure a fair comparison between large and small nations",
+      "distribution": [],
+      "personal_data": "no",
+      "security_and_privacy": [],
+      "sensitive_data": "no",
+      "technical_resource": [],
+      "title": "Population on 1 January by age and sex Population au 1er janvier par âge et sexe Bevölkerung am 1. Januar nach Alter und Geschlecht",
+      "type": "Other",
+      "dataset_id": {
+        "identifier": "R5",
+        "type": "other"
+      },
+      "rights": [
+        {
+          "license_ref": "https://ec.europa.eu/eurostat/help/copyright-notice",
+          "description": "Eurostat copyright notice and free reuse policy. Reuse is permitted with source attribution and indication of modifications."
+        }
+      ]
+    }
+  ],
+  "ethical_issues_exist": "no",
+  "modified": "2026-05-30T22:57:53.362536+00:00",
+  "project": [
+    {
+      "description": "This project analyzes environmental protection investments across EU countries (2014–2022) using Eurostat data. It explores the relationship between national wealth and sustainability spending through data preprocessing, exploratory analysis and predictive modeling (Linear Regression and Random Forest).",
+      "end": "2026-06-30 00:00:00.0",
+      "funding": [],
+      "start": "2026-03-01 00:00:00.0",
+      "title": "Do Rich Countries Invest More in Saving the Planet? Analysis of Europe’s Green Investment Landscape"
+    }
+  ],
+  "title": "Final maDMP: Do Rich Countries Invest More in Saving the Planet? Analysis of Europe’s Green Investment Landscape",
+  "language": "eng",
+  "dmp_id": {
+    "identifier": "10.70124/fcqeh-0vp73",
+    "type": "doi"
+  },
+  "related_identifier": [
+    {
+      "identifier": "https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis",
+      "type": "url",
+      "relation": "is_documented_by",
+      "descriptor": "GitHub repository containing source code and workflow"
+    },
+    {
+      "identifier": "https://doi.org/10.5281/zenodo.20455989",
+      "type": "doi",
+      "relation": "is_supplemented_by",
+      "descriptor": "Archived software release"
+    },
+    {
+      "identifier": "https://doi.org/10.82556/2wmj-nz26",
+      "type": "doi",
+      "relation": "is_derived_from",
+      "descriptor": "DBRepo database used as structured source data"
+    },
+    {
+      "identifier": "10.70124/wzjz7-cbj65",
+      "type": "doi",
+      "relation": "is_supplement_to",
+      "descriptor": "Related trained model deposit"
+    },
+    {
+      "identifier": "10.70124/cyysd-qvw90",
+      "type": "doi",
+      "relation": "has_part",
+      "descriptor": "Generated output data deposit"
+    },
+    {
+      "identifier": "10.70124/fqq87-vwa35",
+      "type": "doi",
+      "relation": "continues",
+      "descriptor": "Initial DMP continued by this final DMP"
+    }
+  ]
+}
