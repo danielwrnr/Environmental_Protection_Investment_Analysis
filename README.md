@@ -89,7 +89,8 @@ This section documents the naming convention.
 │   ├── raw/                              # Original downloaded datasets
 │   └── processed/                        # Cleaned and transformed datasets
 ├── database/                             # Database definitions
-├── docs/                                 # Project documentation, model cards, FAIR4ML metadata, and semantic mappings
+├── docs/                                 # Project documentation, model cards, FAIR4ML metadata, semantic mappings
+│   ├── croissant/                        # Croissant metadata of input data
 │   └── validation/                       # RO-Crate and metadata validation reports
 ├── figures/                              # Generated plots and visualisations
 ├── models/                               # Trained model artefacts
@@ -98,7 +99,6 @@ This section documents the naming convention.
 │   └── investment_analysis.ipynb         # Primary analysis and experiment notebook
 ├── results/                              # Model evaluation outputs and performance metrics
 ├── scripts/                              # Utility scripts for metadata generation and validation
-
 ```
 
 
