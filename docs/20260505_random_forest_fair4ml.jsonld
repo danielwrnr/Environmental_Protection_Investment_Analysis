@@ -40,29 +40,23 @@
   "fair4ml:usageInstructions": "Model was trained using scikit-learn RandomForestRegressor with the following hyperparameters: n_estimators=200, max_depth=5, random_state=42. All remaining parameters use scikit-learn defaults (criterion=squared_error, max_features=1.0, min_samples_split=2, min_samples_leaf=1, bootstrap=True).",
 
   "fair4ml:trainedOn": {
-    "@type"            : ["schema:Dataset", "cr:Dataset"],
-    "schema:name"      : "Environmental investment dataset (temporal training split 2014–2019)",
-    "schema:identifier": "<TRAINING_DATASET_DOI_PLACEHOLDER>",
-    "schema:description": "Pre-processed dataset used for model training, including log-transformed GDP per capita, population and environmental investment per capita."
+    "@type"           : ["schema:Dataset", "cr:Dataset"],
+    "schema:name"     : "DBRepo Regression Feature View Dataset: Environmental investment dataset (temporal training split 2014–2019)",
+    "schema:identifier": "https://doi.org/10.82556/2wmj-nz26",
+    "schema:description": "DBRepo dataset (test environment DOI) used via SQL view v_ml_regression_features (ID: 216dc569-b20c-43fd-ab1e-6a2bad631b1c)"
   },
 
   "fair4ml:testedOn": {
-    "@type"            : ["schema:Dataset", "cr:Dataset"],
-    "schema:name"      : "Environmental investment dataset (temporal test split 2020–2022)",
-    "schema:identifier": "<TEST_DATASET_DOI_PLACEHOLDER>",
-    "schema:description": "Hold-out test split based on temporal separation (years 2020–2022) used to evaluate model generalisation on new data."
+    "@type"           : ["schema:Dataset", "cr:Dataset"],
+    "schema:name"     : "DBRepo Regression Feature View Dataset: Environmental investment dataset (temporal test split 2020–2022)",
+    "schema:identifier": "https://doi.org/10.82556/2wmj-nz26",
+    "schema:description": "DBRepo dataset (test environment DOI) used via SQL view v_ml_regression_features (ID: 216dc569-b20c-43fd-ab1e-6a2bad631b1c)"
   },
 
   "fair4ml:hasEvaluation": {
     "@type"                      : "fair4ml:MLModelEvaluation",
     "schema:name"                : "Test-set evaluation (2020–2022)",
     "fair4ml:extrinsicEvaluation": false,
-
-    "fair4ml:evaluationDataset": {
-      "@type"            : "cr:Dataset",
-      "schema:name"      : "Temporal test split 2020–2022",
-      "schema:identifier": "<TEST_DATASET_DOI_PLACEHOLDER>"
-    },
 
     "fair4ml:evaluationMetrics": [
       {

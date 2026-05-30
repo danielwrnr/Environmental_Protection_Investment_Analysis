@@ -58,12 +58,6 @@
     "schema:name"              : "Test-set evaluation (2020–2022)",
     "fair4ml:extrinsicEvaluation": false,
 
-    "fair4ml:evaluationDataset": {
-      "@type"           : "cr:Dataset",
-      "schema:name"     : "Temporal test split 2020–2022",
-      "schema:identifier": "<TEST_DATASET_DOI_PLACEHOLDER>"
-    },
-
     "fair4ml:evaluationMetrics": [
       {
         "@type"                    : "schema:PropertyValue",
