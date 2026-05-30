@@ -84,20 +84,15 @@ The notebook therefore fetches the four base tables — `Country`, `Environmenta
 
 ## Database views
 
-The 3NF base schema (`database/schema.sql`) is denormalised by three SQL views (`database/views.sql`) for consumption by the ML pipeline. All views clip negative investment values to zero while preserving NULLs.
+Three views are registered in DBRepo on top of the 3NF base schema (`database/schema.sql`); their definitions are mirrored in `database/views.sql`. They were created through the DBRepo UI, which does not allow computed columns or multi-column join conditions, so the views are intentionally minimal — no negative-value clipping, no derived totals, no logarithmic transformations.
 
-| View | Purpose | Grain |
+| View | What it returns | Known limitation |
 |---|---|---|
-| `v_investment_sector_breakdown` | Per-CEPA-category investments joined with country and activity names. Adds derived `inv_corp_total` and `inv_total`. Excludes the `TOT_CEPA` aggregate. Used for trend analysis and category exploration. | (year, country_code, ceparema_code), excluding `TOT_CEPA` |
-| `v_investment_national_totals` | National totals (`ceparema_code = 'TOT_CEPA'`) enriched with `population`, `gdp_per_capita`, and derived `inv_per_capita`. Used as the source for the regression and clustering pipelines. | One row per (year, country_code) |
-| `v_ml_regression_features` | ML-ready feature table built on the totals view. Applies `LN(1 + x)` to `gdp_per_capita`, `population`, and `inv_per_capita`, and drops any row with a NULL input. Consumed directly by the regression notebook. | One row per (year, country_code) with no NULLs |
+| `v_investment_sector_breakdown` | Intended to expose per-CEPA-category facts excluding `TOT_CEPA`. | Both joins are accidental self-joins on `Country` and `Environmental_Activity`, so the view returns no usable rows. |
+| `v_investment_national_totals` | National totals (`ceparema_code = 'TOT_CEPA'`) joined with country names and macroeconomic indicators. | The `Macroeconomic_Indicator` join matches on `country_code` only — the year predicate cannot be expressed in the UI. Each TOT_CEPA row is therefore returned once per macro record for the same country (e.g. Austria/2014 returns nine rows). |
+| `v_ml_regression_features` | Subset of the totals view that drops rows with NULL `gdp_per_capita` or `population`. | Missing all `log_*` columns and `inv_per_capita`; inherits the cartesian explosion from view 2. |
 
-Correctness of the views is verified by `database/tests/test_views.py`, which reconstructs the base tables from the notebook's processed CSVs, runs the views in an in-process DuckDB engine (MariaDB-compatible for the SQL surface used here), and asserts:
-
-- SQL invariants: PK uniqueness, value bounds (clipped to ≥ 0), `inv_total` and `inv_corp_total` arithmetic, `inv_per_capita = inv_total / population`, `log_x = LN(1 + x)`.
-- Value-by-value parity against `data/processed/20260505_investments_*.csv` (the notebook outputs) within float tolerance.
-
-Run with `python database/tests/test_views.py` (requires `duckdb` and `pandas`).
+All clipping, derived columns, log transformations, the `(country_code, year)` macro join, and the country-scope filter are applied in pandas after the REST fetch — see `notebooks/investment_analysis.ipynb` and the "Data loading from DBRepo" section above. The notebook's run is verified end-to-end against the original local-file baseline (`results/20260505_reg_model_performance_comparison.csv`).
 
 ## File organisation
 

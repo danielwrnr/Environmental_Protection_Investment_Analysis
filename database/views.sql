@@ -1,98 +1,90 @@
 -- ============================================================
 -- T2.4 View definitions (DBRepo / MariaDB)
 -- ============================================================
--- Three SQL views denormalise the 3NF base schema into shapes
--- consumed by the ML pipeline (see notebooks/investment_analysis.ipynb).
+-- These definitions reflect the views actually registered in the
+-- live DBRepo deployment of this project. They were created via
+-- the DBRepo UI, which has two constraints:
+--   1. No computed columns. The UI only lets you pick existing
+--      columns; expressions (`CASE WHEN x < 0 ...`, `a + b`,
+--      `LN(1 + x)`) cannot be added to a view.
+--   2. No multi-column join conditions. Only single-column
+--      equality predicates can be specified per join.
 --
--- Semantics notes:
---   * inv_gov / inv_corp_spec / inv_corp_anc:
---       Negative source values (e.g. Estonia 2021-2022 inv_gov)
---       are clipped to 0 via CASE WHEN x < 0 THEN 0 ELSE x END.
---       NULLs are preserved (CASE returns NULL when the test
---       evaluates to NULL). The CASE form is engine-portable
---       (MariaDB GREATEST returns NULL on any NULL arg, but
---       DuckDB's GREATEST is NULL-skipping - hence avoid it).
---   * inv_corp_total and inv_total:
---       Treat NULLs as 0 (matches notebook .fillna(0) before sum).
---   * Year filter (2014-2022) is enforced at load time (T2.5),
---       not in the views.
+-- Consequently the views below are intentionally minimal: no
+-- clipping, no aggregation, no logarithmic transformations.
+-- All derived columns the analysis needs - `inv_corp_total`,
+-- `inv_total`, `inv_per_capita`, the `log_*` regression
+-- features - and the per-row negative clipping are applied in
+-- pandas after the REST fetch. See
+-- notebooks/investment_analysis.ipynb (T2.6) and the
+-- "Data loading from DBRepo" section of the README.
 
 -- --------------------------------------------------------------
 -- View 1: v_investment_sector_breakdown
--- Per-sector environmental investment facts, joined with country
--- and CEPA activity names. Excludes the TOT_CEPA aggregate row
--- (use v_investment_national_totals for totals).
 -- --------------------------------------------------------------
+-- NOTE: The two joins below are accidental self-joins introduced
+-- when the view was created in the DBRepo UI - the join target
+-- columns were selected from the wrong table. As a result the
+-- view returns zero usable rows. The notebook ignores this view
+-- and reconstructs the sector breakdown in pandas from the base
+-- Environmental_Investment / Country / Environmental_Activity
+-- tables.
 CREATE OR REPLACE VIEW v_investment_sector_breakdown AS
 SELECT
-    ei.year                                                                       AS year,
-    ei.country_code                                                               AS country_code,
-    c.country_name                                                                AS country_name,
-    ei.ceparema_code                                                              AS ceparema_code,
-    ea.activity_name                                                              AS activity_name,
-    CASE WHEN ei.inv_gov < 0 THEN 0 ELSE ei.inv_gov END                                                       AS inv_gov,
-    CASE WHEN ei.inv_corp_spec < 0 THEN 0 ELSE ei.inv_corp_spec END                                                 AS inv_corp_spec,
-    CASE WHEN ei.inv_corp_anc < 0 THEN 0 ELSE ei.inv_corp_anc END                                                  AS inv_corp_anc,
-    COALESCE(CASE WHEN ei.inv_corp_spec < 0 THEN 0 ELSE ei.inv_corp_spec END, 0)
-        + COALESCE(CASE WHEN ei.inv_corp_anc < 0 THEN 0 ELSE ei.inv_corp_anc END, 0)                               AS inv_corp_total,
-    COALESCE(CASE WHEN ei.inv_gov < 0 THEN 0 ELSE ei.inv_gov END, 0)
-        + COALESCE(CASE WHEN ei.inv_corp_spec < 0 THEN 0 ELSE ei.inv_corp_spec END, 0)
-        + COALESCE(CASE WHEN ei.inv_corp_anc < 0 THEN 0 ELSE ei.inv_corp_anc END, 0)                               AS inv_total
+    ei.inv_corp_spec,
+    ei.inv_gov,
+    ei.inv_corp_anc,
+    ei.country_code,
+    ei.year,
+    ei.ceparema_code
 FROM Environmental_Investment ei
-JOIN Country c                 ON ei.country_code  = c.country_code
-JOIN Environmental_Activity ea ON ei.ceparema_code = ea.ceparema_code
-WHERE ei.ceparema_code <> 'TOT_CEPA';
+JOIN Country               c  ON c.country_name  = c.country_code
+JOIN Environmental_Activity ea ON ea.activity_name = ea.ceparema_code
+WHERE ea.ceparema_code <> 'TOT_CEPA';
 
 -- --------------------------------------------------------------
 -- View 2: v_investment_national_totals
--- National per-year totals (ceparema_code = 'TOT_CEPA') enriched
--- with population and GDP per capita. Adds inv_per_capita.
--- Used as the input table for regression and clustering.
 -- --------------------------------------------------------------
+-- NOTE: The LEFT JOIN on Macroeconomic_Indicator only matches on
+-- country_code (the year predicate cannot be expressed in the
+-- DBRepo UI), so each TOT_CEPA row is joined with every macro
+-- record for the country: e.g. Austria/2014 is returned nine
+-- times with nine different `gdp_per_capita` values. The
+-- notebook fetches the base tables and joins on
+-- (country_code, year) in pandas.
 CREATE OR REPLACE VIEW v_investment_national_totals AS
 SELECT
-    ei.year                                                                       AS year,
-    ei.country_code                                                               AS country_code,
-    c.country_name                                                                AS country_name,
-    ei.ceparema_code                                                              AS ceparema_code,
-    ea.activity_name                                                              AS activity_name,
-    CASE WHEN ei.inv_gov < 0 THEN 0 ELSE ei.inv_gov END                                                       AS inv_gov,
-    CASE WHEN ei.inv_corp_spec < 0 THEN 0 ELSE ei.inv_corp_spec END                                                 AS inv_corp_spec,
-    CASE WHEN ei.inv_corp_anc < 0 THEN 0 ELSE ei.inv_corp_anc END                                                  AS inv_corp_anc,
-    COALESCE(CASE WHEN ei.inv_corp_spec < 0 THEN 0 ELSE ei.inv_corp_spec END, 0)
-        + COALESCE(CASE WHEN ei.inv_corp_anc < 0 THEN 0 ELSE ei.inv_corp_anc END, 0)                               AS inv_corp_total,
-    COALESCE(CASE WHEN ei.inv_gov < 0 THEN 0 ELSE ei.inv_gov END, 0)
-        + COALESCE(CASE WHEN ei.inv_corp_spec < 0 THEN 0 ELSE ei.inv_corp_spec END, 0)
-        + COALESCE(CASE WHEN ei.inv_corp_anc < 0 THEN 0 ELSE ei.inv_corp_anc END, 0)                               AS inv_total,
-    m.population                                                                  AS population,
-    (COALESCE(CASE WHEN ei.inv_gov < 0 THEN 0 ELSE ei.inv_gov END, 0)
-        + COALESCE(CASE WHEN ei.inv_corp_spec < 0 THEN 0 ELSE ei.inv_corp_spec END, 0)
-        + COALESCE(CASE WHEN ei.inv_corp_anc < 0 THEN 0 ELSE ei.inv_corp_anc END, 0)
-    ) / NULLIF(m.population, 0)                                                   AS inv_per_capita,
-    m.gdp_per_capita                                                              AS gdp_per_capita
+    ei.inv_corp_anc,
+    ea.activity_name,
+    ei.year,
+    m.gdp_per_capita,
+    ei.inv_corp_spec,
+    ei.inv_gov,
+    ei.country_code,
+    c.country_name,
+    ei.ceparema_code,
+    m.population
 FROM Environmental_Investment ei
-JOIN Country c                       ON ei.country_code  = c.country_code
-JOIN Environmental_Activity ea       ON ei.ceparema_code = ea.ceparema_code
-LEFT JOIN Macroeconomic_Indicator m  ON m.country_code   = ei.country_code
-                                    AND m.year           = ei.year
+LEFT OUTER JOIN Macroeconomic_Indicator m   ON ei.country_code  = m.country_code
+JOIN            Country                  c  ON ei.country_code  = c.country_code
+JOIN            Environmental_Activity   ea ON ei.ceparema_code = ea.ceparema_code
 WHERE ei.ceparema_code = 'TOT_CEPA';
 
 -- --------------------------------------------------------------
 -- View 3: v_ml_regression_features
--- ML-ready feature table built on v_investment_national_totals.
--- Applies LN(1 + x) (log1p) transformations matching the notebook
--- preprocessing for the GDP -> investment regression, and drops
--- rows with any NULL input. Consumed directly by T2.6.
 -- --------------------------------------------------------------
+-- NOTE: The three `log_*` regression features and
+-- `inv_per_capita` cannot be expressed here for the same reason
+-- (no computed columns in the DBRepo UI). The notebook applies
+-- LN(1 + x) in pandas. This view also inherits the cartesian
+-- explosion from v_investment_national_totals.
 CREATE OR REPLACE VIEW v_ml_regression_features AS
 SELECT
     year,
-    country_code,
+    gdp_per_capita,
     country_name,
-    LN(1 + gdp_per_capita) AS log_gdp_per_capita,
-    LN(1 + population)     AS log_population,
-    LN(1 + inv_per_capita) AS log_inv_per_capita
+    country_code,
+    population
 FROM v_investment_national_totals
 WHERE gdp_per_capita IS NOT NULL
-  AND population     IS NOT NULL
-  AND inv_per_capita IS NOT NULL;
+  AND population     IS NOT NULL;
