@@ -38,8 +38,8 @@ SELECT
     ei.year,
     ei.ceparema_code
 FROM Environmental_Investment ei
-JOIN Country               c  ON c.country_name  = c.country_code
-JOIN Environmental_Activity ea ON ea.activity_name = ea.ceparema_code
+JOIN Country               c  ON ei.country_code = c.country_code
+JOIN Environmental_Activity ea ON ei.ceparema_code = ea.ceparema_code
 WHERE ea.ceparema_code <> 'TOT_CEPA';
 
 -- --------------------------------------------------------------
