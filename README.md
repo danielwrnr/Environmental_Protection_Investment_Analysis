@@ -82,6 +82,20 @@ The three views from `database/views.sql` are registered in DBRepo (`v_investmen
 
 The notebook therefore fetches the four base tables — `Country`, `Environmental_Activity`, `Macroeconomic_Indicator`, `Environmental_Investment` — and reproduces the view logic (joins, derived `inv_corp_total` / `inv_total` / `inv_per_capita`, negative clipping, log transformations) in pandas. The behaviour is equivalent to the pristine definitions in `database/views.sql`.
 
+## Input dataset metadata (Croissant)
+
+Each of the five Eurostat input datasets is described by a Croissant 1.0 JSON-LD record in `metadata/croissant/`:
+
+| File | Eurostat dataset | DOI |
+|---|---|---|
+| `env_ac_epigg1.json` | Environmental protection investments by general government | [`10.2908/ENV_AC_EPIGG1`](https://doi.org/10.2908/ENV_AC_EPIGG1) |
+| `env_ac_epissp1.json` | Environmental protection investments by specialist and secondary producers | [`10.2908/ENV_AC_EPISSP1`](https://doi.org/10.2908/ENV_AC_EPISSP1) |
+| `env_ac_epiap1.json` | Environmental protection investments by ancillary producers | [`10.2908/ENV_AC_EPIAP1`](https://doi.org/10.2908/ENV_AC_EPIAP1) |
+| `sdg_08_10.json` | Real GDP per capita (chain-linked volumes, base 2020) | [`10.2908/SDG_08_10`](https://doi.org/10.2908/SDG_08_10) |
+| `demo_pjan.json` | Population on 1 January by age and sex | [`10.2908/DEMO_PJAN`](https://doi.org/10.2908/DEMO_PJAN) |
+
+Each record describes the raw CSV (path, sha256, encoding), its categorical fields, the 2014–2022 year columns used by the analysis (with QUDT unit URIs from T2.3 — `https://qudt.org/vocab/unit/CCY_EUR`, `.../NUM`, `.../YR`), and the Eurostat reuse licence. All five validate against the official `mlcroissant` 1.0 validator; output captured in `docs/validation/croissant-validation.txt`.
+
 ## Database views
 
 Three views are registered in DBRepo on top of the 3NF base schema (`database/schema.sql`); their definitions are mirrored in `database/views.sql`. They were created through the DBRepo UI, which does not allow computed columns or multi-column join conditions, so the views are intentionally minimal — no negative-value clipping, no derived totals, no logarithmic transformations.

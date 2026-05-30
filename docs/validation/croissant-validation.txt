@@ -1,0 +1,45 @@
+=== demo_pjan.json ===
+name           : demo_pjan
+conforms_to    : ['http://mlcommons.org/croissant/1.0']
+license        : ['https://ec.europa.eu/eurostat/about-us/policies/copyright']
+distributions  : 1
+record sets    : 1
+fields         : 14
+VALID
+
+=== env_ac_epiap1.json ===
+name           : env_ac_epiap1
+conforms_to    : ['http://mlcommons.org/croissant/1.0']
+license        : ['https://ec.europa.eu/eurostat/about-us/policies/copyright']
+distributions  : 1
+record sets    : 1
+fields         : 15
+VALID
+
+=== env_ac_epigg1.json ===
+name           : env_ac_epigg1
+conforms_to    : ['http://mlcommons.org/croissant/1.0']
+license        : ['https://ec.europa.eu/eurostat/about-us/policies/copyright']
+distributions  : 1
+record sets    : 1
+fields         : 13
+VALID
+
+=== env_ac_epissp1.json ===
+name           : env_ac_epissp1
+conforms_to    : ['http://mlcommons.org/croissant/1.0']
+license        : ['https://ec.europa.eu/eurostat/about-us/policies/copyright']
+distributions  : 1
+record sets    : 1
+fields         : 13
+VALID
+
+=== sdg_08_10.json ===
+name           : sdg_08_10
+conforms_to    : ['http://mlcommons.org/croissant/1.0']
+license        : ['https://ec.europa.eu/eurostat/about-us/policies/copyright']
+distributions  : 1
+record sets    : 1
+fields         : 13
+VALID
+

@@ -1,0 +1,340 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileObject": "cr:fileObject",
+    "fileProperty": "cr:fileProperty",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "unitCode": "sc:unitCode"
+  },
+  "@type": "sc:Dataset",
+  "@id": "https://doi.org/10.2908/ENV_AC_EPIAP1",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "name": "env_ac_epiap1",
+  "alternateName": "Environmental protection investments by ancillary producers",
+  "description": "Annual environmental protection investments by ancillary corporate producers, broken down by CEPA/CReMA activity, NACE Rev. 2 economic activity, and environmental/economic investment type. The experiment filters this dataset to nace_r2 = 'EP_BSN' (business sector total) and env_econ in {'EPS_INV_PT', 'EPS_INV_PP'} (end-of-pipe + integrated technologies), then sums by (geo, year, ceparema) to obtain a single ancillary investment value per cell. Values are reported in millions of Euro.",
+  "url": "https://ec.europa.eu/eurostat/databrowser/view/env_ac_epiap1/default/table",
+  "version": "1.0.0",
+  "datePublished": "2026-05-05",
+  "license": "https://ec.europa.eu/eurostat/about-us/policies/copyright",
+  "creator": {
+    "@type": "sc:Organization",
+    "@id": "https://ror.org/02wnnz963",
+    "name": "Eurostat",
+    "description": "Statistical office of the European Union",
+    "url": "https://ec.europa.eu/eurostat"
+  },
+  "publisher": {
+    "@type": "sc:Organization",
+    "@id": "https://ror.org/02wnnz963",
+    "name": "Eurostat",
+    "description": "Statistical office of the European Union",
+    "url": "https://ec.europa.eu/eurostat"
+  },
+  "citeAs": "Eurostat (2026). Environmental protection investments by ancillary producers. Dataset env_ac_epiap1. https://doi.org/10.2908/ENV_AC_EPIAP1",
+  "identifier": [
+    "https://doi.org/10.2908/ENV_AC_EPIAP1",
+    "https://ec.europa.eu/eurostat/databrowser/view/env_ac_epiap1/default/table"
+  ],
+  "keywords": [
+    "Eurostat",
+    "environmental statistics",
+    "EU",
+    "open data"
+  ],
+  "isLiveDataset": false,
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "raw-csv",
+      "name": "20260505_raw_env_ac_epiap1.csv",
+      "description": "Snapshot of Eurostat dataset env_ac_epiap1 retrieved on 2026-05-05 and stored alongside the experiment for reproducibility.",
+      "contentUrl": "../../data/raw/20260505_raw_env_ac_epiap1.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "9ace74ef358eb720d04c7addad5e0beb720c6dd1a45bb0ae61d0588f03cd31dd",
+      "contentSize": "1471232 B"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "env_ac_epiap1",
+      "name": "env_ac_epiap1",
+      "description": "One row per combination of the categorical dimensions; each year column (2014-2022) carries the measurement for that year in wide format. Year columns outside the 2014-2022 analysis window are present in the raw CSV but not enumerated here.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "freq",
+          "name": "freq",
+          "description": "Eurostat observation frequency code. Always 'A' (annual) in these extracts.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "freq"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "unit",
+          "name": "unit",
+          "description": "Eurostat unit-of-measurement code (e.g. MIO_EUR, NR, CLV20_EUR_HAB). Numeric values in this CSV are in the unit indicated by this column.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "unit"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "geo",
+          "name": "geo",
+          "description": "ISO 3166-1 alpha-2 country code (plus Eurostat aggregates such as EU27_2020). The original CSV header is 'geo\\\\TIME_PERIOD'.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "geo\\TIME_PERIOD"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "ceparema",
+          "name": "ceparema",
+          "description": "CEPA/CReMA environmental protection activity code.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "ceparema"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "env_econ",
+          "name": "env_econ",
+          "description": "Environmental investment type (e.g. EPS_INV_PT = end-of-pipe technologies; EPS_INV_PP = integrated technologies).",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "env_econ"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "nace_r2",
+          "name": "nace_r2",
+          "description": "NACE Rev. 2 economic activity classification. EP_BSN = total business sector excluding household / government.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "nace_r2"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2014",
+          "name": "2014",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2014.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2014"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2015",
+          "name": "2015",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2015.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2015"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2016",
+          "name": "2016",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2016.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2016"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2017",
+          "name": "2017",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2017.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2017"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2018",
+          "name": "2018",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2018.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2018"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2019",
+          "name": "2019",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2019.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2019"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2020",
+          "name": "2020",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2020.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2020"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2021",
+          "name": "2021",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2021.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2021"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2022",
+          "name": "2022",
+          "description": "Ancillary corporate investment in environmental protection (millions of Euro, unit code MIO_EUR; QUDT reference is the Euro currency unit) reported for year 2022.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2022"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

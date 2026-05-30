@@ -1,0 +1,310 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileObject": "cr:fileObject",
+    "fileProperty": "cr:fileProperty",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform",
+    "unitCode": "sc:unitCode"
+  },
+  "@type": "sc:Dataset",
+  "@id": "https://doi.org/10.2908/SDG_08_10",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "name": "sdg_08_10",
+  "alternateName": "Real GDP per capita (chain-linked volumes, reference year 2020)",
+  "description": "Real Gross Domestic Product per capita, expressed as chain-linked volumes in Euro per inhabitant with reference year 2020 (unit code CLV20_EUR_HAB). The experiment uses the principal aggregate B1GQ (GDP at market prices).",
+  "url": "https://ec.europa.eu/eurostat/databrowser/view/sdg_08_10/default/table",
+  "version": "1.0.0",
+  "datePublished": "2026-05-05",
+  "license": "https://ec.europa.eu/eurostat/about-us/policies/copyright",
+  "creator": {
+    "@type": "sc:Organization",
+    "@id": "https://ror.org/02wnnz963",
+    "name": "Eurostat",
+    "description": "Statistical office of the European Union",
+    "url": "https://ec.europa.eu/eurostat"
+  },
+  "publisher": {
+    "@type": "sc:Organization",
+    "@id": "https://ror.org/02wnnz963",
+    "name": "Eurostat",
+    "description": "Statistical office of the European Union",
+    "url": "https://ec.europa.eu/eurostat"
+  },
+  "citeAs": "Eurostat (2026). Real GDP per capita (chain-linked volumes, reference year 2020). Dataset sdg_08_10. https://doi.org/10.2908/SDG_08_10",
+  "identifier": [
+    "https://doi.org/10.2908/SDG_08_10",
+    "https://ec.europa.eu/eurostat/databrowser/view/sdg_08_10/default/table"
+  ],
+  "keywords": [
+    "Eurostat",
+    "environmental statistics",
+    "EU",
+    "open data"
+  ],
+  "isLiveDataset": false,
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "raw-csv",
+      "name": "20260505_raw_sdg_08_10.csv",
+      "description": "Snapshot of Eurostat dataset sdg_08_10 retrieved on 2026-05-05 and stored alongside the experiment for reproducibility.",
+      "contentUrl": "../../data/raw/20260505_raw_sdg_08_10.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "4d29dd15672896d2f0382dd2ba7e56707ec768e8b6d8480256ecb85bb7bd3df4",
+      "contentSize": "14519 B"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "sdg_08_10",
+      "name": "sdg_08_10",
+      "description": "One row per combination of the categorical dimensions; each year column (2014-2022) carries the measurement for that year in wide format. Year columns outside the 2014-2022 analysis window are present in the raw CSV but not enumerated here.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "freq",
+          "name": "freq",
+          "description": "Eurostat observation frequency code. Always 'A' (annual) in these extracts.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "freq"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "unit",
+          "name": "unit",
+          "description": "Eurostat unit-of-measurement code (e.g. MIO_EUR, NR, CLV20_EUR_HAB). Numeric values in this CSV are in the unit indicated by this column.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "unit"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "geo",
+          "name": "geo",
+          "description": "ISO 3166-1 alpha-2 country code (plus Eurostat aggregates such as EU27_2020). The original CSV header is 'geo\\\\TIME_PERIOD'.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "geo\\TIME_PERIOD"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "na_item",
+          "name": "na_item",
+          "description": "National-accounts indicator code. The analysis selects B1GQ = Gross Domestic Product at market prices.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "na_item"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2014",
+          "name": "2014",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2014.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2014"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2015",
+          "name": "2015",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2015.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2015"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2016",
+          "name": "2016",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2016.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2016"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2017",
+          "name": "2017",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2017.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2017"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2018",
+          "name": "2018",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2018.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2018"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2019",
+          "name": "2019",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2019.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2019"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2020",
+          "name": "2020",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2020.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2020"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2021",
+          "name": "2021",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2021.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2021"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "value_2022",
+          "name": "2022",
+          "description": "Real GDP per capita (chain-linked volumes, Euro per inhabitant, reference year 2020; unit code CLV20_EUR_HAB; QUDT reference is the Euro currency unit) reported for year 2022.",
+          "dataType": "sc:Float",
+          "unitCode": "https://qudt.org/vocab/unit/CCY_EUR",
+          "source": {
+            "fileObject": {
+              "@id": "raw-csv"
+            },
+            "extract": {
+              "column": "2022"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
