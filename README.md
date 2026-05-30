@@ -1,5 +1,5 @@
 # Environmental Protection Investment Analysis
-This project analyzes environmental protection investments across EU countries (2014–2022) using Eurostat data. It explores the relationship between national wealth and sustainability spending through data preprocessing, exploratory analysis, clustering and predictive modeling (Linear Regression and Random Forest).
+This project analyzes environmental protection investments across EU countries (2014–2022) using Eurostat data. It explores the relationship between national wealth and sustainability spending through data preprocessing, exploratory analysis and predictive modeling (Linear Regression and Random Forest).
 
 
 ##  Requirements and Installation
@@ -13,7 +13,7 @@ This project analyzes environmental protection investments across EU countries (
 
 Install dependencies from the project root or directly within the notebook environment. 
 
-**Option 1 (recommended)**
+**Option 1 (recommended when only using the notebooks)**
 
 Run the following cell in any notebook before executing any other part of the notebook. This cell is already included in the provided notebooks.
 
@@ -21,7 +21,7 @@ Run the following cell in any notebook before executing any other part of the no
 %pip install -r ../requirements.txt
 ```
 
-**Option 2 (Terminal)**
+**Option 2**
 
 From the project root:
 
@@ -43,14 +43,120 @@ git clone https://github.com/danielwrnr/Environmental_Protection_Investment_Anal
 cd Environmental_Protection_Investment_Analysis
 ```
 
-3. Open the analysis notebook: notebooks/investment_analysis.ipynb
+3. Run analysis notebook
 
-4. Install dependencies (see above)
-5. Run the notebook cells. The generated outputs will be written to 
+Open the notebook 'notebooks/investment_analysis.ipynb'
+
+Before execution, ensure dependencies are installed (see Installation section). Run all cells sequentially.
+
+Generated outputs are written to:
 - data/
 - figures/
 - models/
 - results/
+
+
+**Additional Setup: Database (DBRepo) and Data Ingestion**
+
+This step is only required if the database has not already been set up or if a fresh ingestion of the raw data is needed.
+
+Open the notebook `notebooks/dbrepo_upload.ipynb`.
+
+Before execution, ensure dependencies are installed (see Installation section). This notebook initializes the DBRepo database schema and loads all required datasets for the analysis pipeline.
+
+If the data should be loaded into a different database instance, update:
+
+```python
+DATABASE_ID
+```
+
+For fully reproducible results using the exact dataset version used in this project, set in **T2.5 – DBRepo load**:
+
+```python
+USE_REPRODUCIBLE_SNAPSHOT = True
+```
+
+
+## File organisation
+
+This section documents the naming convention.
+
+### Folder structure
+
+```
+├── data/
+│   ├── raw/                              # Original downloaded datasets
+│   └── processed/                        # Cleaned and transformed datasets
+├── database/                             # Database definitions
+├── docs/                                 # Project documentation, model cards, FAIR4ML metadata, and semantic mappings
+│   └── validation/                       # RO-Crate and metadata validation reports
+├── figures/                              # Generated plots and visualisations
+├── models/                               # Trained model artefacts
+├── notebooks/
+│   ├── dbrepo_upload.ipynb/              # Database creation, schema setup and data ingestion into DBRepo 
+│   └── investment_analysis.ipynb         # Primary analysis and experiment notebook
+├── results/                              # Model evaluation outputs and performance metrics
+├── scripts/                              # Utility scripts for metadata generation and validation
+
+```
+
+
+### General Convention
+
+All generated files are prefixed with a date (`YYYYMMDD`) for chronological ordering and traceability:
+
+```
+<YYYYMMDD>_<descriptor>.<extension>
+```
+
+- **Date prefix** (`YYYYMMDD`): the date on which the file was produced.
+- **Descriptor**: a lowercase, underscore-separated label describing the file's content.
+- **Extension**: file type
+
+### Overview by File Type
+
+| File type            | Location           | Pattern                                              |
+|----------------------|--------------------|------------------------------------------------------|
+| Raw data             | `data/raw/`        | `YYYYMMDD_raw_<dataset_code>.csv`                    |
+| Processed data       | `data/processed/`  | `YYYYMMDD_<content_descriptor>.csv`                  |
+| Figures              | `figures/`         | `YYYYMMDD_<chart_description>.png`                   |
+| Model artefacts      | `models/`          | `YYYYMMDD_<algorithm>.joblib`            |
+| Results              | `results/`         | `YYYYMMDD_<evaluation_descriptor>.csv`               |
+| Main notebook        | `notebooks/`       | `investment_analysis.ipynb`                          |
+
+**Notes on Reproducibility**
+
+- The date prefix in file names corresponds to the run date, not the date of the underlying data.
+- Re-running the pipeline on the same day will overwrite same-date files unless output paths are parameterised to include a run ID or time suffix.
+- To support multiple runs per day, the pattern has to be extended to `<YYYYMMDD>_<HH-MM>_<descriptor>.<extension>` if needed.
+
+
+## Input dataset metadata (Croissant)
+
+Each of the five Eurostat input datasets is described by a Croissant 1.0 JSON-LD record in `metadata/croissant/`:
+
+| File | Eurostat dataset | DOI |
+|---|---|---|
+| `env_ac_epigg1.json` | Environmental protection investments by general government | [`10.2908/ENV_AC_EPIGG1`](https://doi.org/10.2908/ENV_AC_EPIGG1) |
+| `env_ac_epissp1.json` | Environmental protection investments by specialist and secondary producers | [`10.2908/ENV_AC_EPISSP1`](https://doi.org/10.2908/ENV_AC_EPISSP1) |
+| `env_ac_epiap1.json` | Environmental protection investments by ancillary producers | [`10.2908/ENV_AC_EPIAP1`](https://doi.org/10.2908/ENV_AC_EPIAP1) |
+| `sdg_08_10.json` | Real GDP per capita (chain-linked volumes, base 2020) | [`10.2908/SDG_08_10`](https://doi.org/10.2908/SDG_08_10) |
+| `demo_pjan.json` | Population on 1 January by age and sex | [`10.2908/DEMO_PJAN`](https://doi.org/10.2908/DEMO_PJAN) |
+
+Each record describes the raw CSV (path, sha256, encoding), its categorical fields, the 2014–2022 year columns used by the analysis (with QUDT unit URIs from T2.3 — `https://qudt.org/vocab/unit/CCY_EUR`, `.../NUM`, `.../YR`), and the Eurostat reuse licence. All five validate against the official `mlcroissant` 1.0 validator; output captured in `docs/validation/croissant-validation.txt`.
+
+## Outputs
+
+Executing `notebooks/investment_analysis.ipynb` produces a set of reproducible analytical artefacts derived from the Eurostat input datasets.
+
+- **Processed datasets:** Generated CSV files containing cleaned, harmonised and analysis-ready data are written to `data/processed/`.
+- **Visualisations:** Figures illustrating environmental investment patterns, country-level comparisons and model behaviour are written to `figures/`.
+- Trained models: The machine learning pipeline exports trained model artefacts (e.g. Linear Regression and Random Forest models) to `models/`.
+- Evaluation results: Model evaluation metrics, prediction summaries and comparison tables are written to `results/`.
+- Database artefacts: When `notebooks/dbrepo_upload.ipynb` is executed, the project additionally creates and populates a DBRepo database containing:
+the 3NF base schema, reference tables (`Country`, `Environmental_Activity`), fact tables (`Environmental_Investment`, `Macroeconomic_Indicator`), registered analytical views.
+
+These artefacts are described in more detail in the sections *Data loading from DBRepo* and *Database views*.
 
 
 ## Data loading from DBRepo
@@ -82,19 +188,6 @@ The three views from `database/views.sql` are registered in DBRepo (`v_investmen
 
 The notebook therefore fetches the four base tables — `Country`, `Environmental_Activity`, `Macroeconomic_Indicator`, `Environmental_Investment` — and reproduces the view logic (joins, derived `inv_corp_total` / `inv_total` / `inv_per_capita`, negative clipping, log transformations) in pandas. The behaviour is equivalent to the pristine definitions in `database/views.sql`.
 
-## Input dataset metadata (Croissant)
-
-Each of the five Eurostat input datasets is described by a Croissant 1.0 JSON-LD record in `metadata/croissant/`:
-
-| File | Eurostat dataset | DOI |
-|---|---|---|
-| `env_ac_epigg1.json` | Environmental protection investments by general government | [`10.2908/ENV_AC_EPIGG1`](https://doi.org/10.2908/ENV_AC_EPIGG1) |
-| `env_ac_epissp1.json` | Environmental protection investments by specialist and secondary producers | [`10.2908/ENV_AC_EPISSP1`](https://doi.org/10.2908/ENV_AC_EPISSP1) |
-| `env_ac_epiap1.json` | Environmental protection investments by ancillary producers | [`10.2908/ENV_AC_EPIAP1`](https://doi.org/10.2908/ENV_AC_EPIAP1) |
-| `sdg_08_10.json` | Real GDP per capita (chain-linked volumes, base 2020) | [`10.2908/SDG_08_10`](https://doi.org/10.2908/SDG_08_10) |
-| `demo_pjan.json` | Population on 1 January by age and sex | [`10.2908/DEMO_PJAN`](https://doi.org/10.2908/DEMO_PJAN) |
-
-Each record describes the raw CSV (path, sha256, encoding), its categorical fields, the 2014–2022 year columns used by the analysis (with QUDT unit URIs from T2.3 — `https://qudt.org/vocab/unit/CCY_EUR`, `.../NUM`, `.../YR`), and the Eurostat reuse licence. All five validate against the official `mlcroissant` 1.0 validator; output captured in `docs/validation/croissant-validation.txt`.
 
 ## Database views
 
@@ -107,67 +200,6 @@ Three views are registered in DBRepo on top of the 3NF base schema (`database/sc
 | `v_ml_regression_features` | Subset of the totals view that drops rows with NULL `gdp_per_capita` or `population`. | Missing all `log_*` columns and `inv_per_capita`; inherits the cartesian explosion from view 2. |
 
 All clipping, derived columns, log transformations, the `(country_code, year)` macro join, and the country-scope filter are applied in pandas after the REST fetch — see `notebooks/investment_analysis.ipynb` and the "Data loading from DBRepo" section above. The notebook's run is verified end-to-end against the original local-file baseline (`results/20260505_reg_model_performance_comparison.csv`).
-
-## File organisation
-
-This section documents the naming convention.
-
-### Folder structure
-
-```
-├── data/
-│   ├── raw/                              # Original downloaded datasets
-│   └── processed/                        # Cleaned and transformed datasets
-├── figures/                              # Generated plots and visualisations
-├── models/                               # Trained model artefacts
-├── notebooks/
-│   └── investment_analysis.ipynb         # Primary analysis and experiment notebook
-├── results/                              # Model evaluation outputs and performance metrics
-├── README.md                             # Project documentation
-└── requirements.txt                      # Python package dependencies
-```
-
-
-
-### General Convention
-
-All generated files are prefixed with a date (`YYYYMMDD`) for chronological ordering and traceability:
-
-```
-<YYYYMMDD>_<descriptor>.<extension>
-```
-
-- **Date prefix** (`YYYYMMDD`): the date on which the file was produced.
-- **Descriptor**: a lowercase, underscore-separated label describing the file's content.
-- **Extension**: file type
-
-### Overview by File Type
-
-| File type            | Location           | Pattern                                              |
-|----------------------|--------------------|------------------------------------------------------|
-| Raw data             | `data/raw/`        | `YYYYMMDD_raw_<dataset_code>.csv`                    |
-| Processed data       | `data/processed/`  | `YYYYMMDD_<content_descriptor>.csv`                  |
-| Figures              | `figures/`         | `YYYYMMDD_<chart_description>.png`                   |
-| Model artefacts      | `models/`          | `YYYYMMDD_<algorithm>.joblib`            |
-| Results              | `results/`         | `YYYYMMDD_<evaluation_descriptor>.csv`               |
-| Main notebook        | `notebooks/`       | `investment_analysis.ipynb`                          |
-
----
-
-## Notes on Reproducibility
-
-- The date prefix in file names corresponds to the run date, not the date of the underlying data.
-- Re-running the pipeline on the same day will overwrite same-date files unless output paths are parameterised to include a run ID or time suffix.
-- To support multiple runs per day, the pattern has to be extended to `<YYYYMMDD>_<HH-MM>_<descriptor>.<extension>` if needed.
-
-
-## Inputs
-
-The project uses the following Eurostat input datasets: `ENV_AC_EPIGG1`, `ENV_AC_EPISSP1`, `ENV_AC_EPIAP1`, `SDG_08_10`, and `DEMO_PJAN`
-
-## Outputs 
-
-...
 
 
 ## Licences
