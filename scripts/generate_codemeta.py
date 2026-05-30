@@ -13,7 +13,7 @@ REQUIREMENTS_FILE = PROJECT_ROOT / "requirements.txt"
 OUTPUT_FILE = PROJECT_ROOT / "codemeta.json"
 
 PROJECT_NAME = "Environmental Protection Investment Analysis"
-PROJECT_VERSION = "1.2.0"
+PROJECT_VERSION = "2.0.0"
 GITHUB_URL = "https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis"
 
 AUTHORS = [

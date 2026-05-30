@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "name": "Environmental Protection Investment Analysis",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "A reproducible data science project analysing Eurostat environmental protection investment data with DBRepo and machine learning.",
   "author": [
     {
@@ -99,6 +99,11 @@
       "@type": "SoftwareApplication",
       "name": "dbrepo",
       "version": "1.13.5"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "duckdb",
+      "version": "1.5.3"
     }
   ],
   "codeRepository": "https://github.com/danielwrnr/Environmental_Protection_Investment_Analysis"
