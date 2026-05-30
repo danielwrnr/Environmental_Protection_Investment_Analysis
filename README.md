@@ -134,7 +134,7 @@ All generated files are prefixed with a date (`YYYYMMDD`) for chronological orde
 
 ## Input dataset metadata (Croissant)
 
-Each of the five Eurostat input datasets is described by a Croissant 1.0 JSON-LD record in `metadata/croissant/`:
+Each of the five Eurostat input datasets is described by a Croissant 1.0 JSON-LD record in `docs/croissant/`:
 
 | File | Eurostat dataset | DOI |
 |---|---|---|

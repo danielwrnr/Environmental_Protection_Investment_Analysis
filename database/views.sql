@@ -22,13 +22,12 @@
 -- --------------------------------------------------------------
 -- View 1: v_investment_sector_breakdown
 -- --------------------------------------------------------------
--- NOTE: The two joins below are accidental self-joins introduced
--- when the view was created in the DBRepo UI - the join target
--- columns were selected from the wrong table. As a result the
--- view returns zero usable rows. The notebook ignores this view
--- and reconstructs the sector breakdown in pandas from the base
--- Environmental_Investment / Country / Environmental_Activity
--- tables.
+-- The view returns the three raw investment values per
+-- (country, year, ceparema) for non-aggregate ceparema codes.
+-- It does not expose `country_name`, `activity_name`,
+-- `inv_corp_total` or `inv_total` - those derived columns are
+-- computed by the notebook after the REST fetch, since the
+-- DBRepo UI does not permit expressions in view columns.
 CREATE OR REPLACE VIEW v_investment_sector_breakdown AS
 SELECT
     ei.inv_corp_spec,
