@@ -114,7 +114,7 @@ All generated files are prefixed with a date (`YYYYMMDD`) for chronological orde
 - **Descriptor**: a lowercase, underscore-separated label describing the file's content.
 - **Extension**: file type
 
-### Overview by File Type
+### Naming convention by File Type
 
 | File type            | Location           | Pattern                                              |
 |----------------------|--------------------|------------------------------------------------------|
@@ -150,12 +150,12 @@ Each record describes the raw CSV (path, sha256, encoding), its categorical fiel
 
 Executing `notebooks/investment_analysis.ipynb` produces a set of reproducible analytical artefacts derived from the Eurostat input datasets.
 
-- **Processed datasets:** Generated CSV files containing cleaned, harmonised and analysis-ready data are written to `data/processed/`.
+- **Raw data**: Generated CSV files containing raw data from eurostat are written to `data/raw/`.
+- **Processed datasets:** Generated CSV files containing cleaned and analysis-ready data are written to `data/processed/`.
 - **Visualisations:** Figures illustrating environmental investment patterns, country-level comparisons and model behaviour are written to `figures/`.
-- Trained models: The machine learning pipeline exports trained model artefacts (e.g. Linear Regression and Random Forest models) to `models/`.
-- Evaluation results: Model evaluation metrics, prediction summaries and comparison tables are written to `results/`.
-- Database artefacts: When `notebooks/dbrepo_upload.ipynb` is executed, the project additionally creates and populates a DBRepo database containing:
-the 3NF base schema, reference tables (`Country`, `Environmental_Activity`), fact tables (`Environmental_Investment`, `Macroeconomic_Indicator`), registered analytical views.
+- **Trained models**: The machine learning pipeline exports trained model artefacts to `models/`.
+- **Evaluation results**: Model evaluation metrics, prediction summaries and comparison tables are written to `results/`.
+- **Database artefacts**: When `notebooks/dbrepo_upload.ipynb` is executed, the project additionally creates and populates a DBRepo database containing: the 3NF base schema, reference tables (`Country`, `Environmental_Activity`), fact tables (`Environmental_Investment`, `Macroeconomic_Indicator`), registered analytical views.
 
 These artefacts are described in more detail in the sections *Data loading from DBRepo* and *Database views*.
 
