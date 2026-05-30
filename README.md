@@ -171,11 +171,8 @@ The CC BY 4.0 licence will also be stated in the metadata of each deposit that c
 
 ## Zenodo DOI
 
-<!--
-After enabling the GitHub-Zenodo integration and cutting the first GitHub release,
-Zenodo will mint a concept DOI for this repository. Replace the placeholders below
-with the assigned record ID (the numeric part of the Zenodo DOI):
--->
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.ZENODO_RECORD_ID.svg)](https://doi.org/10.5281/zenodo.ZENODO_RECORD_ID)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20455989.svg)](https://doi.org/10.5281/zenodo.20455989)
+
+The badge points to the **concept DOI**, which always resolves to the latest version of the deposit. The Zenodo record is auto-archived from the GitHub repository via the GitHub-Zenodo integration.
 
 Citation metadata is also provided in `CITATION.cff` at the repository root.

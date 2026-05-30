@@ -38,10 +38,8 @@ keywords:
   - data stewardship
   - linear regression
   - random forest
-# After enabling the GitHub-Zenodo integration and cutting a GitHub release,
-# replace ZENODO_RECORD_ID with the concept DOI assigned by Zenodo:
-# doi: "10.5281/zenodo.ZENODO_RECORD_ID"
-# identifiers:
-#   - type: doi
-#     value: "10.5281/zenodo.ZENODO_RECORD_ID"
-#     description: "Concept DOI - resolves to the latest version"
+doi: "10.5281/zenodo.20455989"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20455989"
+    description: "Zenodo concept DOI - resolves to the latest version"
