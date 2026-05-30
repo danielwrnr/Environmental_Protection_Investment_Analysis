@@ -25,5 +25,8 @@ The Linear Regression model exhibits significant limitations due to the assumpti
 ## Ethical Considerations
 While the data consists of aggregated national statistics and does not contain Personally Identifiable Information (PII), ethical considerations remain regarding the interpretation of the results. There is a risk that the model could be misinterpreted to justify reduced environmental spending in lower-GDP nations under the assumption that green investment is inherently a "luxury" of wealthier countries. Care must be taken to communicate the model's uncertainties and the observational nature of the data.
 
+## FAIR4ML Metadata
+The FAIR4ML-compliant metadata for this model is registered in [20260505_linear_regression_fair4ml.jsonld](20260505_linear_regression_fair4ml.jsonld).
+
 ## Licence
 The trained model and associated artifacts are distributed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This open license permits free use, sharing, and adaptation of the model by anyone, provided that appropriate credit is given to the original authors. We encourage downstream users to adhere to open science principles when reusing these assets.

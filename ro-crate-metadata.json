@@ -69,10 +69,10 @@
           "@id": "results/20260505_reg_model_performance_comparison.csv"
         },
         {
-          "@id": "docs/model-card.md"
+          "@id": "docs/20260505_linear_regression_fair4ml.jsonld"
         },
         {
-          "@id": "docs/FAIR4ML.json"
+          "@id": "docs/20260505_random_forest_fair4ml.jsonld"
         }
       ],
       "identifier": "https://doi.org/10.82556/2wmj-nz26"
