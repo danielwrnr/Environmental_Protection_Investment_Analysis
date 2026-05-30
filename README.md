@@ -1,4 +1,5 @@
-# Environmental Protection Investment Analysis
+# Do Rich Countries Invest More in Saving the Planet? Analysis of Europe’s Green Investment Landscape
+
 This project analyzes environmental protection investments across EU countries (2014–2022) using Eurostat data. It explores the relationship between national wealth and sustainability spending through data preprocessing, exploratory analysis and predictive modeling (Linear Regression and Random Forest).
 
 
