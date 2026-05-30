@@ -53,6 +53,35 @@ cd Environmental_Protection_Investment_Analysis
 - results/
 
 
+## Data loading from DBRepo
+
+The experiment notebook (`notebooks/investment_analysis.ipynb`) loads all input data **exclusively from DBRepo via REST** — there are no local CSV file reads in the data-loading code (T2.6).
+
+**API base URL:** `https://test.dbrepo.tuwien.ac.at/api/v1`
+**Database ID:** `123289f2-5218-4b32-b962-5f3dafec1fe3`
+**Persistent DOI:** [`10.82556/2wmj-nz26`](https://doi.org/10.82556/2wmj-nz26)
+**Authentication:** none required — the database is `is_public=true` and reads work anonymously. Writes (not used by the analysis pipeline) would require HTTP Basic auth with a DBRepo account.
+
+**Endpoints used by the notebook:**
+
+| Method | Path | Purpose |
+|---|---|---|
+| GET | `/database/{db_id}/table/{table_id}/data?page=N&size=M` | Fetch base table rows, paginated |
+| GET | `/database/{db_id}/view/{view_id}/data?page=N&size=M` | Fetch view rows (not used in the final notebook — see below) |
+| GET | `/database/{db_id}/view/{view_id}` | Inspect a view's SQL definition and column list |
+
+All requests send `Accept: application/json`. NULL columns are stripped from individual response objects but materialise as NaN once loaded into pandas.
+
+### Why base tables instead of views
+
+The three views from `database/views.sql` are registered in DBRepo (`v_investment_sector_breakdown`, `v_investment_national_totals`, `v_ml_regression_features`), but the DBRepo UI does not support computed columns or multi-column join conditions. As a result the live view definitions differ materially from `views.sql`:
+
+- `v_investment_national_totals` is missing the `year` condition on the join to `Macroeconomic_Indicator`, which causes a cartesian explosion (Austria/2014 returns 9 rows with different `gdp_per_capita` values).
+- `v_ml_regression_features` inherits that explosion and additionally has none of the `log_*` or `inv_per_capita` columns it should compute.
+- `v_investment_sector_breakdown` is encoded with self-joins on the `Country` and `Environmental_Activity` tables and returns no usable rows.
+
+The notebook therefore fetches the four base tables — `Country`, `Environmental_Activity`, `Macroeconomic_Indicator`, `Environmental_Investment` — and reproduces the view logic (joins, derived `inv_corp_total` / `inv_total` / `inv_per_capita`, negative clipping, log transformations) in pandas. The behaviour is equivalent to the pristine definitions in `database/views.sql`.
+
 ## Database views
 
 The 3NF base schema (`database/schema.sql`) is denormalised by three SQL views (`database/views.sql`) for consumption by the ML pipeline. All views clip negative investment values to zero while preserving NULLs.
